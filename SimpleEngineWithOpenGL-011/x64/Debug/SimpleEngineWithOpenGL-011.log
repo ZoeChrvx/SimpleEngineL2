@@ -1,9 +1,4 @@
-﻿  Actor.cpp
-  Astroid.cpp
-  Game.cpp
-  Laser.cpp
-  Main.cpp
-  RendererOGL.cpp
+﻿  RendererOGL.cpp
   SpriteComponent.cpp
   Generating Code...
   SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe

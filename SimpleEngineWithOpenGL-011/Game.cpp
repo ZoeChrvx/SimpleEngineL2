@@ -29,6 +29,9 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Ship.png", "Ship");
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
+	//Load Shader
+	Assets::loadShader("Res\Shaders\Basic.vert", "Res\Shaders\Basic.frag", "", "", "", "Basic");
+
 	// Single sprite
 	/*
 	Actor* actor = new Actor();

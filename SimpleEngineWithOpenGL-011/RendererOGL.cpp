@@ -4,10 +4,11 @@
 #include "Vector2.h"
 #include "Log.h"
 #include "SpriteComponent.h"
+#include "Assets.h"
 
 #include <SDL_image.h>
 
-RendererOGL::RendererOGL() :window(nullptr), vertexArray(nullptr), context(nullptr){
+RendererOGL::RendererOGL() :window(nullptr), vertexArray(nullptr), context(nullptr), shader(nullptr){
 }
 
 RendererOGL::~RendererOGL(){
@@ -48,6 +49,7 @@ bool RendererOGL::initialize(Window& windowP) {
 	}
 
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
+	shader = &Assets::getShader("Basic");
 	return true;
 }
 
@@ -60,14 +62,19 @@ void RendererOGL::beginDraw() {
 	//Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	//Active shader and vertex array
+	shader->use();
+	vertexArray->setActive();
 }
 
 void RendererOGL::draw() {
 	drawSprites();
 }
 
-void RendererOGL::drawSprite(const Actor& actor, const texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
 void RendererOGL::endDraw() {

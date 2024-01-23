@@ -2,6 +2,8 @@
 #include <map>
 #include <string>
 #include "Texture.h"
+#include "Shader.h"
+
 using std::map;
 using std::string;
 
@@ -9,9 +11,12 @@ using std::string;
 // functions to load resources. Each loaded resource is also 
 // stored for future reference by string handles. All functions 
 // and resources are static and no public constructor is defined.
+
 class Assets
 {
 public:
+
+    //TEXTURES
     static std::map<std::string, Texture> textures;
 
     // Loads a texture from file
@@ -23,10 +28,31 @@ public:
     // Properly de-allocates all loaded resources
     static void clear();
 
+
+    //SHADER
+    static std::map<std::string, Shader> shaders;
+
+    //Loads (and generates a shader program from file loading vertex, fragment (and tessellation control, evaluation, 
+    // geometry) shader's source code. If tcShaderFile, teShaderFile,gShaderFile are not nullptr, it also loads
+    // tessellation and geometry shaders
+
+    static Shader loadShader(const std::string& vShaderFile, const std::string& fShaderFile,
+        const std::string& tcShaderFile, const std::string& teShaderFile,
+        const std::string& gShaderFile, const std::string& name);
+
+    //Retrieves a stored shader
+    static Shader& getShader(const std::string& name);
+
+
 private:
     Assets() {}
 
     // Loads a single texture from file
     static Texture loadTextureFromFile(IRenderer& renderer, const string& filename);
+
+    //Loads and generates a shader from file
+    static Shader loadShaderFromFile(const std::string& vShaderFile, const std::string& fShaderFile,
+        const std::string& tcShaderFile = "", const std::string& teShaderFile = "",
+        const std::string& gShaderFile = "");
 };
 

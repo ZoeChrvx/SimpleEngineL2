@@ -162,6 +162,7 @@
     <ClCompile Include="RendererOGL.cpp" />
     <ClCompile Include="RendererSDL.cpp" />
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="RendererOGL.h" />
     <ClInclude Include="RendererSDL.h" />
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Texture.h" />
@@ -196,6 +198,10 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic.frag" />
+    <None Include="Basic.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -61,6 +61,9 @@
     <ClCompile Include="VertexArray.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -128,6 +131,9 @@
     <ClInclude Include="VertexArray.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -142,5 +148,16 @@
     <Filter Include="GameSpecific">
       <UniqueIdentifier>{16bbc5cb-8686-42a9-a571-465347f550b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Shader">
+      <UniqueIdentifier>{c8831637-3cc6-4ea5-8de8-d2e14562c618}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Basic.vert">
+      <Filter>Graphics\Shader</Filter>
+    </None>
+    <None Include="Basic.frag">
+      <Filter>Graphics\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
