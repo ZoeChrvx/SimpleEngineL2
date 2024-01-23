@@ -12,11 +12,13 @@ D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Main.cpp
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MoveComponent.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\MoveComponent.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Random.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Random.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Rectangle.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Rectangle.obj
-D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Renderer.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Renderer.obj
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\RendererOGL.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\RendererOGL.obj
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\RendererSDL.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\RendererSDL.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Assets.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Assets.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Ship.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Ship.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\SpriteComponent.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\SpriteComponent.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Texture.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Texture.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Timer.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Timer.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Vector2.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Vector2.obj
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\VertexArray.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\VertexArray.obj
 D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Window.cpp;D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\x64\Debug\Window.obj

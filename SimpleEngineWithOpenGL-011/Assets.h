@@ -15,7 +15,7 @@ public:
     static std::map<std::string, Texture> textures;
 
     // Loads a texture from file
-    static Texture loadTexture(Renderer& renderer, const string& filename, const string& name);
+    static Texture loadTexture(IRenderer& renderer, const string& filename, const string& name);
 
     // Retrieves a stored texture
     static Texture& getTexture(const std::string& name);
@@ -27,6 +27,6 @@ private:
     Assets() {}
 
     // Loads a single texture from file
-    static Texture loadTextureFromFile(Renderer& renderer, const string& filename);
+    static Texture loadTextureFromFile(IRenderer& renderer, const string& filename);
 };
 

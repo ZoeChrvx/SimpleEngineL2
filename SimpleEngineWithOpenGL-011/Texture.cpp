@@ -18,8 +18,10 @@ void Texture::unload()
 	}
 }
 
-bool Texture::load(Renderer& renderer, const string& filenameP)
+bool Texture::load(IRenderer& renderer, const string& filenameP)
 {
+	RendererSDL& render = dynamic_cast<RendererSDL&>(renderer);
+
 	filename = filenameP;
 	// Load from file
 	SDL_Surface* surf = IMG_Load(filename.c_str());
@@ -32,7 +34,7 @@ bool Texture::load(Renderer& renderer, const string& filenameP)
 	height = surf->h;
 
 	// Create texture from surface
-	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);
+	SDLTexture = SDL_CreateTextureFromSurface(render.toSDLRenderer(), surf);
 	SDL_FreeSurface(surf);
 	if (!SDLTexture)
 	{

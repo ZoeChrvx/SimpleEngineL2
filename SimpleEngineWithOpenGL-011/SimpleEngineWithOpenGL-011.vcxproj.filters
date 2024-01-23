@@ -18,7 +18,7 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="RendererSDL.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
@@ -55,6 +55,12 @@
       <Filter>GameSpecific</Filter>
     </ClCompile>
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="RendererOGL.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArray.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -76,7 +82,7 @@
     <ClInclude Include="Vector2.h">
       <Filter>Maths</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="RendererSDL.h">
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
@@ -113,6 +119,15 @@
       <Filter>Maths</Filter>
     </ClInclude>
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="IRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererOGL.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArray.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
