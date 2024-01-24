@@ -1,8 +1,25 @@
-﻿  RendererOGL.cpp
+﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+  Astroid.cpp
+  BackgroundSpriteComponent.cpp
+  CircleCollisionComponent.cpp
+  Component.cpp
+  Game.cpp
+  InputComponent.cpp
+  Laser.cpp
+  Main.cpp
+  MoveComponent.cpp
+  RendererOGL.cpp
+  RendererSDL.cpp
+  Shader.cpp
+  Ship.cpp
   SpriteComponent.cpp
   Generating Code...
   SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Astroid.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Basic.frag
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Basic.vert
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character.txt
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character01.png
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character02.png
@@ -43,4 +60,5 @@
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\ShipWithThrust.png
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Stars.png
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Tiles.png
-  41 File(s) copied
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Transform.vert
+  44 File(s) copied

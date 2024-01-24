@@ -1,14 +1,27 @@
 #include "Assets.h"
 #include "Log.h"
+#include "RendererOGL.h"
 #include <sstream>
 
 std::map<std::string, Texture> Assets::textures;
-static std::map<std::string, Shader> shaders;
+std::map<std::string, Shader> Assets::shaders;
 
 Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const string& name)
 {
     textures[name] = loadTextureFromFile(renderer, filename.c_str());
     return textures[name];
+}
+
+Texture Assets::loadTextureFromFile(IRenderer& renderer, const string& filename) {
+    Texture texture;
+    //Not very elegant, bur simpler architecture
+    if (renderer.type() == IRenderer::Type::SDL) {
+        texture.loadSDL(dynamic_cast<RendererSDL&>(renderer), filename);
+    }
+    else if (renderer.type() == IRenderer::Type::OGL) {
+        texture.loadOGL(dynamic_cast<RendererOGL&>(renderer), filename);
+    }
+    return texture;
 }
 
 Texture& Assets::getTexture(const string& name) 
@@ -54,7 +67,7 @@ Shader& Assets::getShader(const std::string& name)
 Texture Assets::loadTextureFromFile(IRenderer& renderer, const string& filename)
 {
     Texture texture;
-    texture.load(renderer, filename);
+    texture.loadSDL(renderer, filename);
     return texture;
 }
 

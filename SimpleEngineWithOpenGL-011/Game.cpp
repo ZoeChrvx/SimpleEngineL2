@@ -30,7 +30,7 @@ void Game::load()
 	Assets::loadTexture(renderer, "Res\\Laser.png", "Laser");
 
 	//Load Shader
-	Assets::loadShader("Res\Shaders\Basic.vert", "Res\Shaders\Basic.frag", "", "", "", "Basic");
+	Assets::loadShader("SimpleEngineWithOpenGL-011\\Res\\Transform.vert", "Res\\Basic.frag", "", "", "", "Transform");
 
 	// Single sprite
 	/*
@@ -124,6 +124,7 @@ void Game::update(float dt)
 	// Move pending actors to actors
 	for (auto pendingActor: pendingActors)
 	{
+		pendingActor->computeWorldTransform();
 		actors.emplace_back(pendingActor);
 	}
 	pendingActors.clear();

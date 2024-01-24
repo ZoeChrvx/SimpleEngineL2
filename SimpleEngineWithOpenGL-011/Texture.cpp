@@ -1,6 +1,7 @@
 #include "Texture.h"
 #include "Log.h"
 #include <SDL_image.h>
+#include <sstream>
 
 Texture::Texture(): filename(""), width(0), height(0), SDLTexture(nullptr)
 {
@@ -16,9 +17,12 @@ void Texture::unload()
 	{
 		SDL_DestroyTexture(SDLTexture);
 	}
+	else {
+		glDeleteTextures(1, &textureID);
+	}
 }
 
-bool Texture::load(IRenderer& renderer, const string& filenameP)
+bool Texture::loadSDL(IRenderer& renderer, const string& filenameP)
 {
 	RendererSDL& render = dynamic_cast<RendererSDL&>(renderer);
 
@@ -42,6 +46,33 @@ bool Texture::load(IRenderer& renderer, const string& filenameP)
 		return false;
 	}
 	Log::info("Loaded texture " + filename);
+	return true;
+}
+
+bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP) {
+	filename = filenameP;
+	//Load from file
+	SDL_Surface* surf = IMG_Load(filename.c_str());
+	if (!surf) {
+		Log::error(LogCategory::Application, "Falies to load texture file" + filename);
+		return false;
+	}
+	width = surf->w;
+	height = surf->h;
+	int format = 0;
+	if (surf->format->format == SDL_PIXELFORMAT_RGB24) {
+		format = GL_RGBA;
+	}
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, surf->pixels);
+	SDL_FreeSurface(surf);
+
+	Log::info("Loaded texture" + filename);
+	//Enbale bilinear filtering
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 	return true;
 }
 

@@ -5,10 +5,17 @@
 #include "Log.h"
 #include "SpriteComponent.h"
 #include "Assets.h"
+#include "Actor.h"
 
 #include <SDL_image.h>
 
-RendererOGL::RendererOGL() :window(nullptr), vertexArray(nullptr), context(nullptr), shader(nullptr){
+RendererOGL::RendererOGL() :
+	window(nullptr), 
+	vertexArray(nullptr), 
+	context(nullptr), 
+	shader(nullptr),
+	viewProj(Matrix4::createSimpleViewProj(WINDOW_WIDTH, WINDOW_HEIGHT))
+{
 }
 
 RendererOGL::~RendererOGL(){
@@ -32,6 +39,7 @@ bool RendererOGL::initialize(Window& windowP) {
 	//Force OpenGl to use hardware acceleration
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
+	shader = &Assets::getShader("Transform");
 
 	context = SDL_GL_CreateContext(windowP.getSDLWindow());
 	glewExperimental = GL_TRUE;
@@ -49,7 +57,7 @@ bool RendererOGL::initialize(Window& windowP) {
 	}
 
 	vertexArray = new VertexArray(vertices, 4, indices, 6);
-	shader = &Assets::getShader("Basic");
+	
 	return true;
 }
 
@@ -62,9 +70,11 @@ void RendererOGL::beginDraw() {
 	//Enable alpha blending on the color buffer
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	shader = &Assets::getShader("Basic");
 
 	//Active shader and vertex array
 	shader->use();
+	shader->setMatrix4("uViewProj", viewProj);
 	vertexArray->setActive();
 }
 
@@ -74,6 +84,10 @@ void RendererOGL::draw() {
 
 void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
+	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
+	Matrix4 world = scaleMat * actor.getWorldTransform();
+	Matrix4 pixelTranslation = Matrix4::createTranslation(Vector3(-WINDOW_WIDTH / 2 - origin.x, -WINDOW_HEIGHT / 2 - origin.y, 0.0f)); //Screen pixel coordinates
+	shader->setMatrix4("uWorldTransform", world * pixelTranslation);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 

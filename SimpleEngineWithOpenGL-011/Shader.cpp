@@ -147,7 +147,6 @@ void Shader::setVector2f(const GLchar* name, const Vector2& value)
 {
     glUniform2f(glGetUniformLocation(id, name), value.x, value.y);
 }
-/*
 void Shader::setVector3f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z)
 {
     glUniform3f(glGetUniformLocation(id, name), x, y, z);
@@ -156,6 +155,7 @@ void Shader::setVector3f(const GLchar* name, const Vector3& value)
 {
     glUniform3f(glGetUniformLocation(id, name), value.x, value.y, value.z);
 }
+/*
 void Shader::setVector4f(const GLchar* name, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
     glUniform4f(glGetUniformLocation(id, name), x, y, z, w);
@@ -164,11 +164,11 @@ void Shader::setVector4f(const GLchar* name, const Vector4& value)
 {
     glUniform4f(glGetUniformLocation(id, name), value.x, value.y, value.z, value.w);
 }
+*/
 void Shader::setMatrix4(const GLchar* name, const Matrix4& matrix)
 {
     glUniformMatrix4fv(glGetUniformLocation(id, name), 1, GL_FALSE, matrix.getAsFloatPtr());
 }
-*/
 void Shader::printShaderInfoLog(GLuint shaderIndex)
 {
     int max_length = 2048;
