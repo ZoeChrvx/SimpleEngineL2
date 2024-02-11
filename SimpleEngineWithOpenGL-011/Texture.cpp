@@ -17,15 +17,14 @@ void Texture::unload()
 	{
 		SDL_DestroyTexture(SDLTexture);
 	}
-	else {
+	else
+	{
 		glDeleteTextures(1, &textureID);
 	}
 }
 
-bool Texture::loadSDL(IRenderer& renderer, const string& filenameP)
+bool Texture::load(IRenderer& renderer, const string& filenameP)
 {
-	RendererSDL& render = dynamic_cast<RendererSDL&>(renderer);
-
 	filename = filenameP;
 	// Load from file
 	SDL_Surface* surf = IMG_Load(filename.c_str());
@@ -38,7 +37,7 @@ bool Texture::loadSDL(IRenderer& renderer, const string& filenameP)
 	height = surf->h;
 
 	// Create texture from surface
-	SDLTexture = SDL_CreateTextureFromSurface(render.toSDLRenderer(), surf);
+	SDLTexture = SDL_CreateTextureFromSurface(renderer.toSDLRenderer(), surf);
 	SDL_FreeSurface(surf);
 	if (!SDLTexture)
 	{
@@ -49,18 +48,25 @@ bool Texture::loadSDL(IRenderer& renderer, const string& filenameP)
 	return true;
 }
 
-bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP) {
+bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP)
+{
 	filename = filenameP;
-	//Load from file
+	// Load from file
 	SDL_Surface* surf = IMG_Load(filename.c_str());
-	if (!surf) {
-		Log::error(LogCategory::Application, "Falies to load texture file" + filename);
+	if(!surf)
+	{
+		Log::error(LogCategory::Application, "Failed to load texture file" + filename);
 		return false;
 	}
 	width = surf->w;
 	height = surf->h;
 	int format = 0;
-	if (surf->format->format == SDL_PIXELFORMAT_RGB24) {
+	if (surf->format->format == SDL_PIXELFORMAT_RGB24)
+	{
+		format = GL_RGB;
+	}
+	else if (surf->format->format == SDL_PIXELFORMAT_RGBA32)
+	{
 		format = GL_RGBA;
 	}
 	glGenTextures(1, &textureID);
@@ -69,7 +75,7 @@ bool Texture::loadOGL(RendererOGL& renderer, const string& filenameP) {
 	SDL_FreeSurface(surf);
 
 	Log::info("Loaded texture" + filename);
-	//Enbale bilinear filtering
+	// Enable bilinear filtering
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

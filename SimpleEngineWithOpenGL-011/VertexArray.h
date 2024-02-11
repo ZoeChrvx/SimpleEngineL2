@@ -1,10 +1,10 @@
 #pragma once
 
 constexpr float vertices[] = {
-	-0.5f,  0.5f, 0.f,	//0.f, 0.f //top left
-	 0.5f,  0.5f, 0.f,	//1.f, 0.f //top right
-	 0.5f, -0.5f, 0.f,	//1.f, 1.f //bottom right
-	-0.5f, -0.5f, 0.f	//0.f, 1.f //bottom left
+	-0.5f, 0.5f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, // top left
+	 0.5f, 0.5f, 0.f, 0.f, 0.f, 0.f, 1.f, 0.f, // top right
+	 0.5f, -0.5f, 0.f, 0.f, 0.f, 0.f, 1.f, 1.f, // bottom right
+	-0.5f, -0.5f, 0.f, 0.f, 0.f, 0.f, 0.f, 1.f // bottom left
 };
 
 constexpr unsigned int indices[] = {
@@ -27,13 +27,11 @@ private:
 	unsigned int nbVertices;
 	unsigned int nbIndices;
 
-	//OpenGL ID of the vertex array object
+	// OpenGL ID of the vertex array object
 	unsigned int vertexArray;
-
-	//OpenGL ID of the vertex buffer
+	// OpenGL ID of the vertex buffer
 	unsigned int vertexBuffer;
-
-	//OpenGL ID of the index buffer
+	// OpenGL ID of the index buffer
 	unsigned int indexBuffer;
 };
 

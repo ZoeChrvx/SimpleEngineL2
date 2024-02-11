@@ -3,7 +3,6 @@
 #include "Texture.h"
 #include "Maths.h"
 #include "SpriteComponent.h"
-#include "Actor.h"
 
 #include <SDL_image.h>
 

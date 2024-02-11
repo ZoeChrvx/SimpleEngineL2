@@ -3,6 +3,7 @@
 #include "VertexArray.h"
 #include "Vector2.h"
 #include "Shader.h"
+#include "DirectionalLight.h"
 
 #include <vector>
 
@@ -22,18 +23,31 @@ public:
 	void addSprite(class SpriteComponent* sprite);
 	void removeSprite(class SpriteComponent* sprite);
 	void drawSprite(const Actor& actor, const class Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const;
+	DirectionalLight& getDirectionalLight() { return dirLight; }
 
 	void close();
 	IRenderer::Type type() { return Type::OGL; }
 
+	void addMesh(class MeshComponent* mesh);
+	void removeMesh(class MeshComponent* mesh);
+	void setViewMatrix(const Matrix4& viewP);
+	void setLightUniforms(Shader& shader);
+	void setAmbientLight(const Vector3& ambientP);
+
 private:
+	void drawMeshes();
 	void drawSprites();
 
 	Window* window;
-	VertexArray* vertexArray;
 	SDL_GLContext context;
-	std::vector<class SpriteComponent*> sprites;
-	Shader* shader;
-	Matrix4 viewProj;
-};
+	VertexArray* spriteVertexArray;
+	Matrix4 spriteViewProj;
+	Matrix4 view;
+	Matrix4 projection;
+	Vector3 ambientLight;
+	DirectionalLight dirLight;
 
+	std::vector<class MeshComponent*> meshes;
+	std::vector<class SpriteComponent*> sprites;
+
+};

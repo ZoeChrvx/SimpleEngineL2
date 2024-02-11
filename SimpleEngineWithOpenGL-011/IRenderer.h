@@ -2,16 +2,17 @@
 #include "Window.h"
 #include "Vector2.h"
 
-class IRenderer 
+class IRenderer
 {
 public:
-	enum class Flip {
+	enum class Flip
+	{
 		None = SDL_FLIP_NONE,
-		Horizental = SDL_FLIP_HORIZONTAL,
-		Vertical =SDL_FLIP_VERTICAL
+		Horizontal = SDL_FLIP_HORIZONTAL,
+		Vertical = SDL_FLIP_VERTICAL
 	};
 
-	enum class Type { SDL, OGL };
+	enum class Type{SDL, OGL};
 
 	virtual ~IRenderer() {};
 
@@ -23,5 +24,5 @@ public:
 	virtual IRenderer::Type type() = 0;
 
 	virtual void drawSprite(const class Actor&, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const = 0;
-
 };
+
