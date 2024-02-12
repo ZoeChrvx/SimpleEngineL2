@@ -47,7 +47,6 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="VertexArray.cpp" />
-    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Vector3.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
@@ -62,6 +61,12 @@
     <ClCompile Include="RendererOGL.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="KeyboardState.cpp" />
+    <ClCompile Include="MouseState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -112,7 +117,6 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="VertexArray.h" />
-    <ClInclude Include="Shader.h" />
     <ClInclude Include="Vector3.h">
       <Filter>Maths</Filter>
     </ClInclude>
@@ -128,6 +132,12 @@
     <ClInclude Include="RendererOGL.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="KeyboardState.h" />
+    <ClInclude Include="MouseState.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -142,16 +152,37 @@
     <Filter Include="GameSpecific">
       <UniqueIdentifier>{16bbc5cb-8686-42a9-a571-465347f550b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Shaders">
+      <UniqueIdentifier>{b91508c6-92f1-4fd7-9b9f-1391380f5e81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Basic.vert" />
-    <None Include="Basic.frag" />
-    <None Include="Transform.vert" />
-    <None Include="Sprite.vert" />
-    <None Include="Sprite.frag" />
-    <None Include="BasicMesh.vert" />
-    <None Include="BasicMesh.frag" />
-    <None Include="Phong.vert" />
-    <None Include="Phong.frag" />
+    <None Include="Basic.frag">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Basic.vert">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="BasicMesh.frag">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="BasicMesh.vert">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Phong.vert">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Phong.frag">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Transform.vert">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Sprite.frag">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
+    <None Include="Sprite.vert">
+      <Filter>Graphics\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

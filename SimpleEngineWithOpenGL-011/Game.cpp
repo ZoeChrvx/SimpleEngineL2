@@ -11,7 +11,8 @@ bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
-	return isWindowInit && isRendererInit; // Return bool && bool && bool ...to detect error
+	bool isInputInit = inputSystem.Initialize();
+	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -104,6 +105,8 @@ void Game::load()
 
 void Game::processInput()
 {
+	inputSystem.PreUpdate();
+
 	// SDL Event
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
@@ -115,10 +118,12 @@ void Game::processInput()
 			break;
 		}
 	}
-	// Keyboard state
-	const Uint8* keyboardState = SDL_GetKeyboardState(nullptr);
+
+	inputSystem.Update();
+	const InputState& input = inputSystem.getInputState();
+
 	// Escape: quit game
-	if (keyboardState[SDL_SCANCODE_ESCAPE])
+	if (input.keyboard.GetKeyState(SDL_SCANCODE_ESCAPE)==ButtonState::Released)
 	{
 		isRunning = false;
 	}
@@ -126,7 +131,7 @@ void Game::processInput()
 	isUpdatingActors = true;
 	for (auto actor : actors)
 	{
-		actor->processInput(keyboardState);
+		actor->processInput(input);
 	}
 	isUpdatingActors = false;
 }
@@ -200,6 +205,7 @@ void Game::unload()
 
 void Game::close()
 {
+	inputSystem.Close();
 	renderer.close();
 	window.close();
 	SDL_Quit();
