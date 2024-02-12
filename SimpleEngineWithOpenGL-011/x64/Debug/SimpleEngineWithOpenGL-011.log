@@ -1,47 +1,54 @@
-﻿  SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Astroid.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Basic.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Basic.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character.txt
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character01.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character02.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character03.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character04.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character05.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character06.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character07.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character08.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character09.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character10.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character11.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character12.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character13.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character14.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character15.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character16.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character17.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Character18.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy01.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy02.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy03.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy04.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy05.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Enemy06.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Farback01.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Farback02.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Laser.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\LICENSE.txt
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\MapLayer1.csv
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\MapLayer2.csv
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\MapLayer3.csv
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Ship.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Ship01.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Ship02.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Ship03.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Ship04.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\ShipWithThrust.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Sprite.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Stars.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Tiles.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Transform.vert
-  45 File(s) copied
+﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  BackgroundSpriteComponent.cpp
+  Camera.cpp
+  CircleCollisionComponent.cpp
+  Component.cpp
+  ControllerState.cpp
+  Cube.cpp
+  Game.cpp
+  InputComponent.cpp
+  InputSystem.cpp
+  KeyboardState.cpp
+  Main.cpp
+  Matrix4.cpp
+  Mesh.cpp
+  MeshComponent.cpp
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MeshComponent.cpp(23,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  MouseState.cpp
+  MoveComponent.cpp
+  Plane.cpp
+  Quaternion.cpp
+  Generating Code...
+  Compiling...
+  RendererOGL.cpp
+  Assets.cpp
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Assets.cpp(262,33): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
+D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Assets.cpp(279,98): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Shader.cpp
+  Sphere.cpp
+  SpriteComponent.cpp
+  Texture.cpp
+  Vector2.cpp
+  Vector3.cpp
+  Window.cpp
+  Generating Code...
+  SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Cube.gpmesh
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Plane.gpmesh
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.vert
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.frag
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.vert
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Cube.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Default.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\HealthBar.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Plane.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
+  17 File(s) copied

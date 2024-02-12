@@ -28,6 +28,7 @@ public:
 	const float getScale() const { return scale; }
 	const Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
+	Vector3 getRight() const;
 
 	void setPosition(Vector3 positionP);
 	void setScale(float scaleP);

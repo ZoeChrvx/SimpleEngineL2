@@ -15,7 +15,7 @@ public:
 	int getUpdateOrder() const { return updateOrder; }
 
 	virtual void processInput(const struct InputState& inputState);
-	virtual void update(float dt);
+	virtual void Update(float dt);
 	virtual void onUpdateWorldTransform() {}
 
 protected:

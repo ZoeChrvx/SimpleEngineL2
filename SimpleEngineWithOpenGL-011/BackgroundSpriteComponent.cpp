@@ -16,7 +16,7 @@ BackgroundSpriteComponent::~BackgroundSpriteComponent()
 
 void BackgroundSpriteComponent::update(float dt)
 {
-	SpriteComponent::update(dt);
+	SpriteComponent::Update(dt);
 	for (auto& bg : textures)
 	{
 		bg.offset.x += scrollSpeed * dt;

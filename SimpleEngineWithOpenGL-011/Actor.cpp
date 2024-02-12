@@ -101,7 +101,7 @@ void Actor::updateComponents(float dt)
 {
 	for (auto component : components)
 	{
-		component->update(dt);
+		component->Update(dt);
 	}
 }
 
@@ -134,4 +134,8 @@ void Actor::removeComponent(Component* component)
 	{
 		components.erase(iter);
 	}
+}
+
+Vector3 Actor::getRight()const {
+	return Vector3::transform(Vector3::unitY, rotation);
 }

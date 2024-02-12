@@ -17,6 +17,6 @@ void Component::processInput(const struct InputState& inputState)
 {
 }
 
-void Component::update(float dt)
+void Component::Update(float dt)
 {
 }

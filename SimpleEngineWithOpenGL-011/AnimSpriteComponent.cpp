@@ -29,7 +29,7 @@ void AnimSpriteComponent::setAnimFPS(float animFPSP)
 
 void AnimSpriteComponent::update(float dt)
 {
-	SpriteComponent::update(dt);
+	SpriteComponent::Update(dt);
 
 	if (animTextures.size() > 0)
 	{
