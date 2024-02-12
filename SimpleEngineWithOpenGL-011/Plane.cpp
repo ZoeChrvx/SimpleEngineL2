@@ -2,7 +2,7 @@
 #include "MeshComponent.h"
 #include "Assets.h"
 
-Plane::Plane(): Actor()
+Plane::Plane() : Actor()
 {
 	setScale(10.0f);
 	MeshComponent* mc = new MeshComponent(this);

@@ -22,7 +22,7 @@ void Mesh::addTexture(Texture* texture)
 
 Texture* Mesh::getTexture(int index)
 {
-	if(index < textures.size())
+	if (index < textures.size())
 	{
 		return textures[index];
 	}

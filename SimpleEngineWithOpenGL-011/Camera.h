@@ -1,6 +1,5 @@
 #pragma once
 #include "Actor.h"
-
 class Camera : public Actor
 {
 public:
@@ -11,4 +10,3 @@ public:
 private:
 	class MoveComponent* moveComponent;
 };
-

@@ -3,7 +3,6 @@
 #include "Actor.h"
 #include "SpriteComponent.h"
 #include "Window.h"
-#include "RendererSDL.h"
 #include "Vector2.h"
 #include "RendererOGL.h"
 #include "Camera.h"
@@ -36,9 +35,7 @@ public:
 
 	void addActor(Actor* actor);
 	void removeActor(Actor* actor);
-
 	RendererOGL& getRenderer() { return renderer; }
-	IRenderer::Type type() { return IRenderer::Type::SDL; }
 
 private:
 	void processInput();
@@ -48,11 +45,10 @@ private:
 	bool isRunning;
 	Window window;
 	RendererOGL renderer;
-	Camera* camera;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-
+	Camera* camera;
 };
 

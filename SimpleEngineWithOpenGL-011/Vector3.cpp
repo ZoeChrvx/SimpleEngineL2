@@ -64,14 +64,14 @@ Vector3 Vector3::transformWithPerspDiv(const Vector3& vec, const Matrix4& mat, f
 	if (!Maths::nearZero(Maths::abs(transformedW)))
 	{
 		transformedW = 1.0f / transformedW;
-		retVal;
+		retVal *= transformedW;
 	}
 	return retVal;
 }
 
 Vector3 Vector3::transform(const Vector3& v, const Quaternion& q)
 {
-	// v + 2.0*cross(q.xyz, cross(q.xyz,v) + q.w*v;
+	// v + 2.0*cross(q.xyz, cross(q.xyz,v) + q.w*v);
 	Vector3 qv(q.x, q.y, q.z);
 	Vector3 retVal = v;
 	retVal += 2.0f * Vector3::cross(qv, Vector3::cross(qv, v) + q.w * v);

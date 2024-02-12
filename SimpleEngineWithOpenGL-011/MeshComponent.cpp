@@ -3,8 +3,7 @@
 #include "Game.h"
 #include "Mesh.h"
 
-MeshComponent::MeshComponent(Actor* owner):Component(owner), mesh(nullptr),
-textureIndex(0)
+MeshComponent::MeshComponent(Actor* owner) : Component(owner), mesh(nullptr), textureIndex(0)
 {
 	owner->getGame().getRenderer().addMesh(this);
 }
@@ -16,9 +15,9 @@ MeshComponent::~MeshComponent()
 
 void MeshComponent::draw(Shader& shader)
 {
-	if(mesh)
+	if (mesh)
 	{
-		Matrix4 wt = owner.getWorlTransform();
+		Matrix4 wt = owner.getWorldTransform();
 		shader.setMatrix4("uWorldTransform", wt);
 		shader.setFloat("uSpecPower", mesh->getSpecularPower());
 		Texture* t = mesh->getTexture(textureIndex);

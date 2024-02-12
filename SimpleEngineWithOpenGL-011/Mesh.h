@@ -26,7 +26,7 @@ public:
 	void setShaderName(const string& shaderNameP);
 	void setRadius(float radiusP);
 	void setSpecularPower(float specularPowerP);
-	
+
 private:
 	vector<Texture*> textures;
 	class VertexArray* vertexArray;

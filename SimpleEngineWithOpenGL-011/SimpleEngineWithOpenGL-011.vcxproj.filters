@@ -18,9 +18,6 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
-    <ClCompile Include="RendererSDL.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -50,7 +47,6 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="VertexArray.cpp" />
-    <ClCompile Include="RendererOGL.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Vector3.cpp">
       <Filter>Maths</Filter>
@@ -63,6 +59,9 @@
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="RendererOGL.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -83,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="RendererSDL.h">
-      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Graphics</Filter>
@@ -116,7 +112,6 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="VertexArray.h" />
-    <ClInclude Include="RendererOGL.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Vector3.h">
       <Filter>Maths</Filter>
@@ -130,6 +125,9 @@
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="RendererOGL.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

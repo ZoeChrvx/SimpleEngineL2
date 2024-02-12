@@ -29,7 +29,7 @@ public:
 		return Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 
-	// Vector substraction (a - b)
+	// Vector subtraction (a - b)
 	friend Vector3 operator-(const Vector3& a, const Vector3& b)
 	{
 		return Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
@@ -88,7 +88,7 @@ public:
 		return temp;
 	}
 
-	//Dot product between two vectors (a dot b)
+	// Dot product between two vectors (a dot b)
 	static float dot(const Vector3& a, const Vector3& b)
 	{
 		return (a.x * b.x + a.y * b.y + a.z * b.z);

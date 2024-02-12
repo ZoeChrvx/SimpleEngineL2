@@ -56,14 +56,14 @@ Vector3 Actor::getForward() const
 
 void Actor::computeWorldTransform()
 {
-	if(mustRecomputeWorldTransform)
+	if (mustRecomputeWorldTransform)
 	{
 		mustRecomputeWorldTransform = false;
 		worldTransform = Matrix4::createScale(scale);
 		worldTransform *= Matrix4::createFromQuaternion(rotation);
 		worldTransform *= Matrix4::createTranslation(position);
 
-		for(auto component : components)
+		for (auto component : components)
 		{
 			component->onUpdateWorldTransform();
 		}
@@ -90,8 +90,10 @@ void Actor::update(float dt)
 {
 	if (state == Actor::ActorState::Active)
 	{
+		computeWorldTransform();
 		updateComponents(dt);
 		updateActor(dt);
+		computeWorldTransform();
 	}
 }
 

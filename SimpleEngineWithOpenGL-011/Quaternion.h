@@ -17,7 +17,7 @@ public:
 	// don't use for axis/angle
 	explicit Quaternion(float inX, float inY, float inZ, float inW);
 
-	// Construct the quaternion from axis and angle
+	// Construct the quaternion from an axis and angle
 	// It is assumed that axis is already normalized,
 	// and the angle is in radians
 	explicit Quaternion(const Vector3& axis, float angle);
@@ -49,7 +49,7 @@ public:
 	{
 		Quaternion retVal;
 		retVal.x = Maths::lerp(a.x, b.x, f);
-		retVal.y = Maths::lerp(a.y, b.y, f); 
+		retVal.y = Maths::lerp(a.y, b.y, f);
 		retVal.z = Maths::lerp(a.z, b.z, f);
 		retVal.w = Maths::lerp(a.w, b.w, f);
 		retVal.normalize();

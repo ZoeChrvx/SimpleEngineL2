@@ -2,7 +2,7 @@
 #include "MoveComponent.h"
 #include "Game.h"
 
-Camera::Camera(): Actor(), moveComponent(nullptr)
+Camera::Camera() : Actor(), moveComponent(nullptr)
 {
 	moveComponent = new MoveComponent(this);
 }
@@ -24,22 +24,22 @@ void Camera::actorInput(const Uint8* keys)
 {
 	float forwardSpeed = 0.0f;
 	float angularSpeed = 0.0f;
-	// zqsd movement
-	if(keys[SDL_SCANCODE_Z])
+	// wasd movement
+	if (keys[SDL_SCANCODE_W])
 	{
 		forwardSpeed += 300.0f;
 	}
-	if(keys[SDL_SCANCODE_S])
+	if (keys[SDL_SCANCODE_S])
 	{
 		forwardSpeed -= 300.0f;
 	}
-	if(keys[SDL_SCANCODE_Q])
+	if (keys[SDL_SCANCODE_A])
 	{
 		angularSpeed -= Maths::twoPi;
 	}
-	if(keys[SDL_SCANCODE_D])
+	if (keys[SDL_SCANCODE_D])
 	{
-		forwardSpeed += Maths::twoPi;
+		angularSpeed += Maths::twoPi;
 	}
 
 	moveComponent->setForwardSpeed(forwardSpeed);

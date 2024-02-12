@@ -3,7 +3,6 @@
 #include "Vector2.h"
 #include <SDL_stdinc.h>
 #include "Matrix4.h"
-#include "Quaternion.h"
 using std::vector;
 
 class Game;
@@ -28,7 +27,7 @@ public:
 	const Vector3 getPosition() const { return position; }
 	const float getScale() const { return scale; }
 	const Quaternion getRotation() const { return rotation; }
-	const Matrix4& getWorlTransform() const { return worldTransform; }
+	const Matrix4& getWorldTransform() const { return worldTransform;  }
 
 	void setPosition(Vector3 positionP);
 	void setScale(float scaleP);
@@ -45,14 +44,13 @@ public:
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);
 	void removeComponent(Component* component);
-	
 
 private:
 	Game& game;
 	ActorState state;
 	Vector3 position;
 	float scale;
-	Quaternion rotation;	
+	Quaternion rotation;
 	Matrix4 worldTransform;
 	bool mustRecomputeWorldTransform;
 
