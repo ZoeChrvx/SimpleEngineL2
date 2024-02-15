@@ -1,22 +1,23 @@
 #pragma once
 #include "CameraComponent.h"
-
 class OrbitCameraComponent : public CameraComponent
 {
 public:
 	OrbitCameraComponent(class Actor* owner);
 
-	void Update(float dt) override;
+	void update(float dt) override;
 
-	float GetPitchSpeed() const { return pitchSpeed; }
-	float GetYawSpeed() const { return yawSpeed; }
+	float getPitchSpeed() const { return pitchSpeed; }
+	float getYawSpeed() const { return yawSpeed; }
 
-	void SetPitchSpeed(float pitchSpeedP);
-	void SetYawSpeed(float yaSpeedP);
+	void setPitchSpeed(float pitchSpeedP);
+	void setYawSpeed(float yawSpeedP);
+
 
 private:
+	// Offset from target
 	Vector3 offset;
-
+	// Up vector of camera
 	Vector3 up;
 
 	float pitchSpeed;

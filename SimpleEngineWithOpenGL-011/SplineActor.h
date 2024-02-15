@@ -1,13 +1,13 @@
 #pragma once
 #include "Actor.h"
-
 class SplineActor : public Actor
 {
 public:
 	SplineActor();
 
-	void ActorInput(const InputState& inputState) override;
-	void RestartSpline();
+	void actorInput(const InputState& inputState) override;
+	void restartSpline();
+
 
 private:
 	class SplineCameraComponent* cameraComponent;

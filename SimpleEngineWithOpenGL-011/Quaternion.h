@@ -105,7 +105,7 @@ public:
 
 	// Concatenate
 	// Rotate by q FOLLOWED BY p
-	static Quaternion Concatenate(const Quaternion& q, const Quaternion& p)
+	static Quaternion concatenate(const Quaternion& q, const Quaternion& p)
 	{
 		Quaternion retVal;
 

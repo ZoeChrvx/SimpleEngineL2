@@ -11,7 +11,7 @@ public:
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
 
-	bool Initialize();
+	bool initialize();
 	void close();
 
 	SDL_Window* getSDLWindow() const { return SDLWindow; }

@@ -11,12 +11,12 @@ SpriteComponent::SpriteComponent(Actor* ownerP, Texture& textureP, int drawOrder
 	texHeight(textureP.getHeight()),
 	isVisible(true)
 {
-	owner.getGame().GetRenderer().AddSprite(this);
+	owner.getGame().getRenderer().addSprite(this);
 }
 
 SpriteComponent::~SpriteComponent()
 {
-	owner.getGame().GetRenderer().RemoveSprite(this);
+	owner.getGame().getRenderer().removeSprite(this);
 }
 
 void SpriteComponent::setTexture(const Texture& textureP)
@@ -28,10 +28,10 @@ void SpriteComponent::setTexture(const Texture& textureP)
 void SpriteComponent::draw(IRenderer& renderer)
 {
 	Vector2 origin{ texWidth / 2.f, texHeight / 2.f };
-	renderer.DrawSprite(owner, texture,	Rectangle::nullRect, origin, IRenderer::Flip::None);
+	renderer.drawSprite(owner, texture,	Rectangle::nullRect, origin, IRenderer::Flip::None);
 }
 
-void SpriteComponent::SetVisible(bool isVisibleP)
+void SpriteComponent::setVisible(bool isVisibleP)
 {
 	isVisible = isVisibleP;
 }

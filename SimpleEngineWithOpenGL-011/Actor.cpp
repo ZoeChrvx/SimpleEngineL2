@@ -12,12 +12,12 @@ Actor::Actor() :
 	mustRecomputeWorldTransform(true),
 	game(Game::instance())
 {
-	game.AddActor(this);
+	game.addActor(this);
 }
 
 Actor::~Actor()
 {
-	game.RemoveActor(this);
+	game.removeActor(this);
 	// Need to delete components
 	// Because ~Component calls RemoveComponent, need a different style loop
 	while (!components.empty())
@@ -26,25 +26,39 @@ Actor::~Actor()
 	}
 }
 
-void Actor::SetPosition(Vector3 positionP)
+void Actor::setPosition(Vector3 positionP)
 {
 	position = positionP;
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::SetScale(float scaleP)
+void Actor::setScale(float scaleP)
 {
 	scale = scaleP;
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::SetRotation(Quaternion rotationP)
+void Actor::setRotation(Quaternion rotationP)
 {
 	rotation = rotationP;
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::SetState(ActorState stateP)
+void Actor::rotate(const Vector3& axis, float angle)
+{
+	Quaternion newRotation = rotation;
+	Quaternion increment(axis, angle);
+	newRotation = Quaternion::concatenate(newRotation, increment);
+	setRotation(newRotation);
+}
+
+void Actor::setAngle(const Vector3& axis, float angle)
+{
+	Quaternion newRotation(axis, angle);
+	setRotation(newRotation);
+}
+
+void Actor::setState(ActorState stateP)
 {
 	state = stateP;
 }
@@ -54,7 +68,12 @@ Vector3 Actor::getForward() const
 	return Vector3::transform(Vector3::unitX, rotation);
 }
 
-void Actor::ComputeWorldTransform()
+Vector3 Actor::getRight() const
+{
+	return Vector3::transform(Vector3::unitY, rotation);
+}
+
+void Actor::computeWorldTransform()
 {
 	if (mustRecomputeWorldTransform)
 	{
@@ -65,35 +84,59 @@ void Actor::ComputeWorldTransform()
 
 		for (auto component : components)
 		{
-			component->OnUpdateWorldTransform();
+			component->onUpdateWorldTransform();
 		}
 	}
 }
 
-void Actor::ProcessInput(const struct InputState& inputState)
+void Actor::rotateToNewForward(const Vector3& newForward)
+{
+	// Figure out difference between original (unit x) and new
+	float dot = Vector3::dot(Vector3::unitX, newForward);
+	float angle = Maths::acos(dot);
+	// Facing down X
+	if (dot > 0.9999f)
+	{
+		setRotation(Quaternion::identity);
+	}
+	// Facing down -X
+	else if (dot < -0.9999f)
+	{
+		setRotation(Quaternion(Vector3::unitZ, Maths::pi));
+	}
+	else
+	{
+		// Rotate about axis from cross product
+		Vector3 axis = Vector3::cross(Vector3::unitX, newForward);
+		axis.normalize();
+		setRotation(Quaternion(axis, angle));
+	}
+}
+
+void Actor::processInput(const InputState& inputState)
 {
 	if (state == Actor::ActorState::Active)
 	{
 		for (auto component : components)
 		{
-			component->ProcessInput(inputState);
+			component->processInput(inputState);
 		}
-		ActorInput(inputState);
+		actorInput(inputState);
 	}
 }
 
-void Actor::ActorInput(const struct InputState& inputState)
+void Actor::actorInput(const InputState& inputState)
 {
 }
 
-void Actor::Update(float dt)
+void Actor::update(float dt)
 {
 	if (state == Actor::ActorState::Active)
 	{
-		ComputeWorldTransform();
+		computeWorldTransform();
 		updateComponents(dt);
 		updateActor(dt);
-		ComputeWorldTransform();
+		computeWorldTransform();
 	}
 }
 
@@ -101,7 +144,7 @@ void Actor::updateComponents(float dt)
 {
 	for (auto component : components)
 	{
-		component->Update(dt);
+		component->update(dt);
 	}
 }
 
@@ -113,11 +156,11 @@ void Actor::addComponent(Component* component)
 {
 	// Find the insertion point in the sorted vector
 	// (The first element with a order higher than me)
-	int myOrder = component->GetUpdateOrder();
+	int myOrder = component->getUpdateOrder();
 	auto iter = begin(components);
 	for (; iter != end(components); ++iter)
 	{
-		if (myOrder < (*iter)->GetUpdateOrder())
+		if (myOrder < (*iter)->getUpdateOrder())
 		{
 			break;
 		}
@@ -134,8 +177,4 @@ void Actor::removeComponent(Component* component)
 	{
 		components.erase(iter);
 	}
-}
-
-Vector3 Actor::getRight()const {
-	return Vector3::transform(Vector3::unitY, rotation);
 }

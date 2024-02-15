@@ -12,11 +12,11 @@ public:
 	AnimSpriteComponent(const AnimSpriteComponent&) = delete;
 	AnimSpriteComponent& operator=(const AnimSpriteComponent&) = delete;
 
-	float GetAnimFPS() const { return animFPS; }
-	void SetAnimTextures(const vector<Texture*>& textures);
-	void SetAnimFPS(float animFPSP);
+	float getAnimFPS() const { return animFPS; }
+	void setAnimTextures(const vector<Texture*>& textures);
+	void setAnimFPS(float animFPSP);
 
-	void Update(float dt) override;
+	void update(float dt) override;
 
 
 private:

@@ -4,11 +4,11 @@
 #include "ControllerState.h"
 #include <SDL_events.h>
 
-
-enum class ButtonState {
+enum class ButtonState
+{
 	None,
 	Pressed,
-	Released,
+	Released, 
 	Held
 };
 
@@ -19,23 +19,23 @@ struct InputState
 	ControllerState controller;
 };
 
-class InputSystem {
+class InputSystem
+{
 public:
 	InputSystem();
 
-	bool processEvent(SDL_Event& event);
-
-	bool Initialize();
-	void Close();
+	bool initialize();
+	void close();
 
 	const InputState getInputState() const { return inputState; }
 
-	void PreUpdate();
-	void Update();
+	bool processEvent(SDL_Event& event); // Returns isRunning status
+	void preUpdate();
+	void update();
 
-	bool GetIsCursorDisplayed() const { return isCursorDisplayed; }
-	void SetMouseCursor(bool isCursorsDisplayedP);
-	void SetMouseRelativeMode(bool isMouseRelativeOnP);
+	bool getIsCursorDisplayed() const { return isCursorDisplayed; }
+	void setMouseCursor(bool isCursorDisplayedP);
+	void setMouseRelativeMode(bool isMouseRelativeOnP);
 
 private:
 	float filter1D(int input);
@@ -43,7 +43,6 @@ private:
 
 	InputState inputState;
 	bool isCursorDisplayed;
-
 	SDL_GameController* controller;
 };
 

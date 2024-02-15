@@ -96,6 +96,17 @@
     <ClCompile Include="SplineActor.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="AABB.cpp" />
+    <ClCompile Include="BallActor.cpp" />
+    <ClCompile Include="BallMoveComponent.cpp" />
+    <ClCompile Include="BoxComponent.cpp" />
+    <ClCompile Include="Collisions.cpp" />
+    <ClCompile Include="CubeActor.cpp" />
+    <ClCompile Include="LineSegment.cpp" />
+    <ClCompile Include="PhysicsSystem.cpp" />
+    <ClCompile Include="PlaneActor.cpp" />
+    <ClCompile Include="SphereActor.cpp" />
+    <ClCompile Include="TargetActor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -198,6 +209,18 @@
     <ClInclude Include="SplineActor.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="AABB.h" />
+    <ClInclude Include="BallActor.h" />
+    <ClInclude Include="BallMoveComponent.h" />
+    <ClInclude Include="BoxComponent.h" />
+    <ClInclude Include="Collisions.h" />
+    <ClInclude Include="CubeActor.h" />
+    <ClInclude Include="LineSegment.h" />
+    <ClInclude Include="PhysicsSystem.h" />
+    <ClInclude Include="PlaneActor.h" />
+    <ClInclude Include="RendererSDL.h" />
+    <ClInclude Include="SphereActor.h" />
+    <ClInclude Include="TargetActor.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

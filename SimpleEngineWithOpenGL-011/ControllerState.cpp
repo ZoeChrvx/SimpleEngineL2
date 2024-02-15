@@ -1,35 +1,45 @@
 #include "ControllerState.h"
 #include "InputSystem.h"
 
-ControllerState::ControllerState():
+
+ControllerState::ControllerState() :
 	leftStick(Vector2()),
 	rightStick(Vector2()),
 	leftTrigger(0.0f),
 	rightTrigger(0.0f),
 	isConnected(false)
 {
+
 }
 
-bool ControllerState::getButtonValue(SDL_GameControllerButton button) const {
-	return currentButtons[button] == 1;
+
+bool ControllerState::getButtonValue(SDL_GameControllerButton button) const
+{
+    return currentButtons[button] == 1;
 }
 
-ButtonState ControllerState::getButtonState(SDL_GameControllerButton button)const {
-	if (previousButtons[button] == 0) {
-		if (currentButtons[button] == 0) {
+ButtonState ControllerState::getButtonState(SDL_GameControllerButton button) const
+{
+	if (previousButtons[button] == 0)
+	{
+		if (currentButtons[button] == 0)
+		{
 			return ButtonState::None;
 		}
-		else {
+		else
+		{
 			return ButtonState::Pressed;
 		}
 	}
-	else {
-		if (currentButtons[button] == 0) {
+	else
+	{
+		if (currentButtons[button] == 0)
+		{
 			return ButtonState::Released;
 		}
-		else {
+		else
+		{
 			return ButtonState::Held;
 		}
 	}
 }
-

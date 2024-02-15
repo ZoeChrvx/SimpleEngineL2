@@ -1,19 +1,19 @@
 #pragma once
 #include "CameraComponent.h"
 #include "Spline.h"
-
 class SplineCameraComponent : public CameraComponent
 {
 public:
 	SplineCameraComponent(class Actor* ownerP);
 
-	void Update(float dt) override;
+	void update(float dt) override;
 
-	void SetSpeed(float speedP);
-	void SetSpline(const Spline& splineP);
-	void SetPaused(bool isPausesP);
+	void setSpeed(float speedP);
+	void setSpline(const Spline& splineP);
+	void setPaused(bool isPausedP);
 
-	void Restart();
+	void restart();
+
 
 private:
 	Spline spline;

@@ -9,6 +9,6 @@ struct Spline
 	vector<Vector3> controlPoints;
 
 	size_t getNbPoints() const { return controlPoints.size(); }
-	Vector3 Compute(size_t index, float t) const;
+	Vector3 compute(size_t index, float t) const;
 };
 

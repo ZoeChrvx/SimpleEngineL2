@@ -5,8 +5,8 @@ class Camera : public Actor
 public:
 	Camera();
 
-	void UpdateActor(float deltaTime);
-	void ActorInput(const struct InputState& inputState) override;
+	void updateActor(float deltaTime);
+	void actorInput(const struct InputState& inputState) override;
 private:
 	class MoveComponent* moveComponent;
 };

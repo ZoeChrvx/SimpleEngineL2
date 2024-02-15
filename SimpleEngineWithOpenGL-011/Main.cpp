@@ -1,13 +1,13 @@
 #include "Game.h"
 int main(int argc, char** argv)
 {
-	bool isGameInit = Game::instance().Initialize();
+	bool isGameInit = Game::instance().initialize();
 	if (isGameInit)
 	{
-		Game::instance().Load();
-		Game::instance().Loop();
-		Game::instance().Unload();
+		Game::instance().load();
+		Game::instance().loop();
+		Game::instance().unload();
 	}
-	Game::instance().Close();
+	Game::instance().close();
 	return 0;
 }

@@ -1,5 +1,6 @@
 #include "Component.h"
 #include "Actor.h"
+#include "InputSystem.h"
 
 Component::Component(Actor* ownerP, int updateOrderP):
 	owner(*ownerP),
@@ -13,10 +14,10 @@ Component::~Component()
 	owner.removeComponent(this);
 }
 
-void Component::ProcessInput(const struct InputState& inputState)
+void Component::processInput(const InputState& inputState)
 {
 }
 
-void Component::Update(float dt)
+void Component::update(float dt)
 {
 }

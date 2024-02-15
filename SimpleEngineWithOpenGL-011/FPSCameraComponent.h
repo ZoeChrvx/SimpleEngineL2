@@ -7,18 +7,19 @@ class FPSCameraComponent : public CameraComponent
 public:
 	FPSCameraComponent(class Actor* ownerP);
 
-	void Update(float dt) override;
+	void update(float dt) override;
 
-	float GetPitch() const { return pitch; }
-	float GetPitchSpeed() const { return pitchSpeed; }
-	float GetMaxPitch() const { return maxPitch; }
+	float getPitch() const { return pitch; }
+	float getPitchSpeed() const { return pitchSpeed; }
+	float getMaxPitch() const { return maxPitch; }
 
-	void SetPitchSpeed(float speed);
-	void SetMaxPitch(float pitch);
-
+	void setPitchSpeed(float speed);
+	void setMaxPitch(float pitch);
 private:
+	// Rotation/sec speed of pitch
 	float pitchSpeed;
+	// Maximum pitch deviation from forward
 	float maxPitch;
+	// Current pitch
 	float pitch;
-}; 
-
+};

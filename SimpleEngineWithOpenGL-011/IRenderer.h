@@ -16,12 +16,12 @@ public:
 
 	virtual ~IRenderer() {};
 
-	virtual bool Initialize(Window& window) = 0;
-	virtual void BeginDraw() = 0;
-	virtual void Draw() = 0;
-	virtual void EndDraw() = 0;
-	virtual void Close() = 0;
+	virtual bool initialize(Window& window) = 0;
+	virtual void beginDraw() = 0;
+	virtual void draw() = 0;
+	virtual void endDraw() = 0;
+	virtual void close() = 0;
 	virtual IRenderer::Type type() = 0;
 
-	virtual void DrawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const = 0;
+	virtual void drawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const = 0;
 };

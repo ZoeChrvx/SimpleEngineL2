@@ -12,11 +12,12 @@ public:
 	Component(const Component&) = delete;
 	Component& operator=(const Component&) = delete;
 
-	int GetUpdateOrder() const { return updateOrder; }
+	int getUpdateOrder() const { return updateOrder; }
+	class Actor& getOwner() { return owner; }
 
-	virtual void ProcessInput(const struct InputState& inputState);
-	virtual void Update(float dt);
-	virtual void OnUpdateWorldTransform() {}
+	virtual void processInput(const struct InputState& inputState);
+	virtual void update(float dt);
+	virtual void onUpdateWorldTransform() {}
 
 protected:
 	Actor& owner;

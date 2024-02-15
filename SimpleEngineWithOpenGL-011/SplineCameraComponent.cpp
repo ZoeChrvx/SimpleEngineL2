@@ -5,53 +5,60 @@ SplineCameraComponent::SplineCameraComponent(Actor* ownerP) :
 	index(1),
 	t(0.0f),
 	speed(0.5f),
-	isPaused(true) 
+	isPaused(true)
 {
 }
 
-void SplineCameraComponent::Update(float dt)
+void SplineCameraComponent::update(float dt)
 {
-	CameraComponent::Update(dt);
+	CameraComponent::update(dt);
 
-	if (!isPaused) {
+	if (!isPaused)
+	{
 		t += speed * dt;
-
-		if (t >= 1.0f) {
-			if (index < spline.getNbPoints() - 3) {
+		// Advance to the next control point if needed.
+		// This assumes speed isn't so fast that you jump past
+		// multiple control points in one frame.
+		if (t >= 1.0f)
+		{
+			// Make sure we have enough points to advance the path
+			if (index < spline.getNbPoints() - 3)
+			{
 				index++;
 				t = t - 1.0f;
 			}
-			else {
+			else
+			{
+				// Path's done, so pause
 				isPaused = true;
 			}
 		}
 	}
 
-	Vector3 cameraPosition = spline.Compute(index, t);
-	Vector3 target = spline.Compute(index, t + 0.01f);
+	Vector3 cameraPosition = spline.compute(index, t);
+	Vector3 target = spline.compute(index, t + 0.01f);
 	Matrix4 view = Matrix4::createLookAt(cameraPosition, target, Vector3::unitZ);
-	SetViewMatrix(view);
+	setViewMatrix(view);
 }
 
-void SplineCameraComponent::SetSpeed(float speedP)
+void SplineCameraComponent::setSpeed(float speedP)
 {
 	speed = speedP;
 }
 
-void SplineCameraComponent::SetSpline(const Spline& splineP)
+void SplineCameraComponent::setSpline(const Spline& splineP)
 {
 	spline = splineP;
 }
 
-void SplineCameraComponent::SetPaused(bool isPausesP)
+void SplineCameraComponent::setPaused(bool isPausedP)
 {
-	isPaused = isPausesP;
+	isPaused = isPausedP;
 }
 
-void SplineCameraComponent::Restart()
+void SplineCameraComponent::restart()
 {
 	index = 1;
 	t = 0.0f;
 	isPaused = false;
 }
-

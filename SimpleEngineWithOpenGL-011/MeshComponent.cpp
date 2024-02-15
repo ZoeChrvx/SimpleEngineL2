@@ -5,22 +5,27 @@
 
 MeshComponent::MeshComponent(Actor* owner) : Component(owner), mesh(nullptr), textureIndex(0), isVisible(true)
 {
-	owner->getGame().GetRenderer().AddMesh(this);
+	owner->getGame().getRenderer().addMesh(this);
 }
 
 MeshComponent::~MeshComponent()
 {
-	owner.getGame().GetRenderer().RemoveMesh(this);
+	owner.getGame().getRenderer().removeMesh(this);
 }
 
-void MeshComponent::Draw(Shader& shader)
+void MeshComponent::setVisible(bool isVisibleP)
+{
+	isVisible = isVisibleP;
+}
+
+void MeshComponent::draw(Shader& shader)
 {
 	if (mesh)
 	{
 		Matrix4 wt = owner.getWorldTransform();
 		shader.setMatrix4("uWorldTransform", wt);
 		shader.setFloat("uSpecPower", mesh->getSpecularPower());
-		Texture* t = mesh->GetTexture(textureIndex);
+		Texture* t = mesh->getTexture(textureIndex);
 		if (t)
 		{
 			t->setActive();
@@ -31,17 +36,12 @@ void MeshComponent::Draw(Shader& shader)
 	}
 }
 
-void MeshComponent::SetMesh(Mesh& meshP)
+void MeshComponent::setMesh(Mesh& meshP)
 {
 	mesh = &meshP;
 }
 
-void MeshComponent::SetTextureIndex(size_t textureIndexP)
+void MeshComponent::setTextureIndex(size_t textureIndexP)
 {
 	textureIndex = textureIndexP;
-}
-
-void MeshComponent::SetVisible(bool isVisibleP)
-{
-	isVisible = isVisibleP;
 }

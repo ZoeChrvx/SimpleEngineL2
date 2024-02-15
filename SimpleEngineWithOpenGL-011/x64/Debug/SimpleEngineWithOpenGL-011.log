@@ -1,16 +1,4 @@
-﻿  Actor.cpp
-  Camera.cpp
-  CameraComponent.cpp
-  CircleCollisionComponent.cpp
-  FPSActor.cpp
-  FPSCameraComponent.cpp
-  Game.cpp
-  Main.cpp
-  MeshComponent.cpp
-D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MeshComponent.cpp(23,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  MoveComponent.cpp
-  SpriteComponent.cpp
-  Generating Code...
+﻿  Game.cpp
   SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
@@ -19,6 +7,7 @@ D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MeshComp
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\RacingCar.gpmesh
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Rifle.gpmesh
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Target.gpmesh
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
@@ -34,4 +23,5 @@ D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MeshComp
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Rifle.png
   D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
-  22 File(s) copied
+  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Target.png
+  24 File(s) copied

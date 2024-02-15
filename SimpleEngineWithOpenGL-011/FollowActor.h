@@ -1,13 +1,12 @@
 #pragma once
 #include "Actor.h"
-
 class FollowActor : public Actor
 {
 public:
 	FollowActor();
 
-	void ActorInput(const InputState& inputState) override;
-	void SetVisible(bool isVisibleP);
+	void actorInput(const InputState& inputState) override;
+	void setVisible(bool isVisibleP);
 
 private:
 	class MoveComponent* moveComponent;

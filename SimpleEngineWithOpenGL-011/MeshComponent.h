@@ -6,12 +6,13 @@ public:
 	MeshComponent(Actor* owner);
 	virtual ~MeshComponent();
 
-	virtual void Draw(class Shader& shader);
-	virtual void SetMesh(class Mesh& meshP);
-	void SetTextureIndex(size_t textureIndexP);
+	bool getVisible() const { return isVisible; }
+	void setVisible(bool isVisibleP);
 
-	bool GetVisible() const { return isVisible; }
-	void SetVisible(bool isVisibleP);
+	virtual void draw(class Shader& shader);
+	virtual void setMesh(class Mesh& meshP);
+	void setTextureIndex(size_t textureIndexP);
+
 
 protected:
 	Mesh* mesh;

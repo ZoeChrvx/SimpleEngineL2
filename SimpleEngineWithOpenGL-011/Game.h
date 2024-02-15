@@ -5,10 +5,9 @@
 #include "Window.h"
 #include "Vector2.h"
 #include "RendererOGL.h"
-#include "Camera.h"
 #include "InputSystem.h"
-#include "OrbitActor.h"
-#include "SplineActor.h"
+#include "PhysicsSystem.h"
+#include "PlaneActor.h"
 
 using std::vector;
 
@@ -27,40 +26,47 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr), follow(nullptr), orbit(nullptr), path(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
 
 public:
-	bool Initialize();
-	void Load();
-	void Loop();
-	void Unload();
-	void Close();
+	bool initialize();
+	void load();
+	void loop();
+	void unload();
+	void close();
 
-	void AddActor(Actor* actor);
-	void RemoveActor(Actor* actor);
-	RendererOGL& GetRenderer() { return renderer; }
+	void addActor(Actor* actor);
+	void removeActor(Actor* actor);
+	RendererOGL& getRenderer() { return renderer; }
+	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
+
+	// Game-specific
+	void addPlane(class PlaneActor* plane);
+	void removePlane(class PlaneActor* plane);
+	vector<PlaneActor*>& getPlanes() { return planes; }
+
 
 private:
-	void ProcessInput();
-	void Update(float dt);
-	void Render();
+	void processInput();
+	void update(float dt);
+	void render();
 
 	bool isRunning;
 	Window window;
 	RendererOGL renderer;
+	InputSystem inputSystem;
+	PhysicsSystem physicsSystem;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
 
-	void ChangeCamera(int mode);
-
+	// Game specific
 	class FPSActor* fps;
-	class SpriteComponent* crosshair;
 	class FollowActor* follow;
 	class OrbitActor* orbit;
 	class SplineActor* path;
-
-	InputSystem inputSystem;
+	class SpriteComponent* crosshair;
+	vector<PlaneActor*> planes;
 };
 

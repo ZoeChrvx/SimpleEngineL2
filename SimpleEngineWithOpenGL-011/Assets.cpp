@@ -10,13 +10,13 @@ std::map<std::string, Texture> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
 std::map<std::string, Mesh> Assets::meshes;
 
-Texture Assets::LoadTexture(IRenderer& renderer, const string& filename, const string& name)
+Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const string& name)
 {
     textures[name] = loadTextureFromFile(renderer, filename.c_str());
     return textures[name];
 }
 
-Texture& Assets::GetTexture(const string& name) 
+Texture& Assets::getTexture(const string& name) 
 {
     if (textures.find(name) == end(textures))
     {
@@ -27,7 +27,7 @@ Texture& Assets::GetTexture(const string& name)
     return textures[name];
 }
 
-Shader Assets::LoadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& tcShaderFile, const std::string& teShaderFile, const std::string& gShaderFile, const std::string& name)
+Shader Assets::loadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& tcShaderFile, const std::string& teShaderFile, const std::string& gShaderFile, const std::string& name)
 {
     shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, tcShaderFile, teShaderFile, gShaderFile);
     return shaders[name];
@@ -44,7 +44,7 @@ Shader& Assets::getShader(const std::string& name)
     return shaders[name];
 }
 
-Mesh Assets::LoadMesh(const string& filename, const string& name)
+Mesh Assets::loadMesh(const string& filename, const string& name)
 {
     meshes[name] = loadMeshFromFile(filename);
     return meshes[name];
@@ -209,7 +209,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	for (rapidjson::SizeType i = 0; i < textures.Size(); i++)
 	{
 		std::string texName = textures[i].GetString();
-		Texture& t = GetTexture(texName);
+		Texture& t = getTexture(texName);
 		mesh.addTexture(&t);
 	}
 
@@ -225,6 +225,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	std::vector<float> vertices;
 	vertices.reserve(vertsJson.Size() * vertSize);
 	float radius = 0.0f;
+    AABB box = AABB(Vector3::infinity, Vector3::negInfinity);
 	for (rapidjson::SizeType i = 0; i < vertsJson.Size(); i++)
 	{
 		// For now, just assume we have 8 elements
@@ -238,6 +239,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 
 		Vector3 pos(static_cast<float>(vert[0].GetDouble()), static_cast<float>(vert[1].GetDouble()), static_cast<float>(vert[2].GetDouble()));
 		radius = Maths::max(radius, pos.lengthSq());
+        box.updateMinMax(pos);
 
 		// Add the floats
 		for (rapidjson::SizeType i = 0; i < vert.Size(); i++)
@@ -248,6 +250,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 
 	// We were computing length squared earlier
 	mesh.setRadius(Maths::sqrt(radius));
+    mesh.setBox(box);
 
 	// Load in the indices
 	const rapidjson::Value& indJson = doc["indices"];

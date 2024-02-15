@@ -25,7 +25,7 @@ RendererOGL::~RendererOGL()
 {
 }
 
-bool RendererOGL::Initialize(Window& windowP)
+bool RendererOGL::initialize(Window& windowP)
 {
 	window = &windowP;
 
@@ -33,19 +33,15 @@ bool RendererOGL::Initialize(Window& windowP)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-
 	// Request a color buffer with 8-bits per RGBA channel
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
-	
 	// Depth buffering
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-	
 	// Enable double buffering
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-	
 	// Force OpenGL to use hardware acceleration
 	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
@@ -73,31 +69,57 @@ bool RendererOGL::Initialize(Window& windowP)
     return true;
 }
 
-void RendererOGL::BeginDraw()
+void RendererOGL::beginDraw()
 {
 	glClearColor(0.45f, 0.45f, 1.0f, 1.0f);
 	// Clear the color and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void RendererOGL::Draw()
+void RendererOGL::draw()
 {
-	DrawMeshes();
-	DrawSprites();
+	drawMeshes();
+	drawSprites();
 }
 
-void RendererOGL::EndDraw()
+void RendererOGL::endDraw()
 {
 	SDL_GL_SwapWindow(window->getSDLWindow());
 }
 
-void RendererOGL::Close()
+void RendererOGL::close()
 {
 	delete spriteVertexArray;
 	SDL_GL_DeleteContext(context);
 }
 
-void RendererOGL::DrawMeshes()
+Vector3 RendererOGL::unproject(const Vector3& screenPoint) const
+{
+	// Convert screenPoint to device coordinates (between -1 and +1)
+	Vector3 deviceCoord = screenPoint;
+	deviceCoord.x /= WINDOW_WIDTH * 0.5f;
+	deviceCoord.y /= WINDOW_HEIGHT * 0.5f;
+
+	// Transform vector by unprojection matrix
+	Matrix4 unprojection = view * projection;
+	unprojection.invert();
+	return Vector3::transformWithPerspDiv(deviceCoord, unprojection);
+}
+
+void RendererOGL::getScreenDirection(Vector3& outStart, Vector3& outDir) const
+{
+	// Get start point (in center of screen on near plane)
+	Vector3 screenPoint(0.0f, 0.0f, 0.0f);
+	outStart = unproject(screenPoint);
+	// Get end point (in center of screen, between near and far)
+	screenPoint.z = 0.9f;
+	Vector3 end = unproject(screenPoint);
+	// Get direction vector
+	outDir = end - outStart;
+	outDir.normalize();
+}
+
+void RendererOGL::drawMeshes()
 {
 	// Enable depth buffering/disable alpha blend
 	glEnable(GL_DEPTH_TEST);
@@ -107,35 +129,36 @@ void RendererOGL::DrawMeshes()
 	// Update view-projection matrix
 	shader.setMatrix4("uViewProj", view * projection);
 	// Lights
-	SetLightUniforms(shader);
+	setLightUniforms(shader);
 	// Draw
 	for (auto mc : meshes)
 	{
-		if (mc->GetVisible()) {
-			mc->Draw(Assets::getShader("Phong"));
+		if (mc->getVisible())
+		{
+			mc->draw(Assets::getShader("Phong"));
 		}
 	}
 }
 
-void RendererOGL::AddSprite(SpriteComponent* sprite)
+void RendererOGL::addSprite(SpriteComponent* sprite)
 {
 	// Insert the sprite at the right place in function of drawOrder
-	int spriteDrawOrder = sprite->GetDrawOrder();
+	int spriteDrawOrder = sprite->getDrawOrder();
 	auto iter = begin(sprites);
 	for (; iter != end(sprites); ++iter)
 	{
-		if (spriteDrawOrder < (*iter)->GetDrawOrder()) break;
+		if (spriteDrawOrder < (*iter)->getDrawOrder()) break;
 	}
 	sprites.insert(iter, sprite);
 }
 
-void RendererOGL::RemoveSprite(SpriteComponent* sprite)
+void RendererOGL::removeSprite(SpriteComponent* sprite)
 {
 	auto iter = std::find(begin(sprites), end(sprites), sprite);
 	sprites.erase(iter);
 }
 
-void RendererOGL::DrawSprites()
+void RendererOGL::drawSprites()
 {
 	glDisable(GL_DEPTH_TEST);
 	// Enable alpha blending on the color buffer
@@ -152,13 +175,14 @@ void RendererOGL::DrawSprites()
 
 	for (auto sprite : sprites)
 	{
-		if (sprite->GetVisible()) {
+		if (sprite->getVisible())
+		{
 			sprite->draw(*this);
 		}
 	}
 }
 
-void RendererOGL::DrawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
+void RendererOGL::drawSprite(const Actor& actor, const Texture& tex, Rectangle srcRect, Vector2 origin, Flip flip) const
 {
 	Matrix4 scaleMat = Matrix4::createScale((float)tex.getWidth(), (float)tex.getHeight(), 1.0f);
 	Matrix4 world = scaleMat * actor.getWorldTransform();
@@ -167,23 +191,23 @@ void RendererOGL::DrawSprite(const Actor& actor, const Texture& tex, Rectangle s
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
-void RendererOGL::AddMesh(MeshComponent* mesh)
+void RendererOGL::addMesh(MeshComponent* mesh)
 {
 	meshes.emplace_back(mesh);
 }
 
-void RendererOGL::RemoveMesh(MeshComponent* mesh)
+void RendererOGL::removeMesh(MeshComponent* mesh)
 {
 	auto iter = std::find(begin(meshes), end(meshes), mesh);
 	meshes.erase(iter);
 }
 
-void RendererOGL::SetViewMatrix(const Matrix4& viewP)
+void RendererOGL::setViewMatrix(const Matrix4& viewP)
 {
 	view = viewP;
 }
 
-void RendererOGL::SetLightUniforms(Shader& shader)
+void RendererOGL::setLightUniforms(Shader& shader)
 {
 	// Camera position is from inverted view
 	Matrix4 invertedView = view;
@@ -198,7 +222,7 @@ void RendererOGL::SetLightUniforms(Shader& shader)
 
 }
 
-void RendererOGL::SetAmbientLight(const Vector3& ambientP)
+void RendererOGL::setAmbientLight(const Vector3& ambientP)
 {
 	ambientLight = ambientP;
 }

@@ -45,7 +45,7 @@ namespace Maths
 	}
 
 	template <typename T>
-	T Clamp(const T& value, const T& lower, const T& upper)
+	T clamp(const T& value, const T& lower, const T& upper)
 	{
 		return min(upper, max(lower, value));
 	}

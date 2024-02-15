@@ -1,6 +1,6 @@
 #include "InputComponent.h"
-#include <SDL_scancode.h>
 #include "InputSystem.h"
+#include <SDL_scancode.h>
 
 InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),
@@ -13,29 +13,29 @@ InputComponent::InputComponent(Actor* ownerP) :
 {
 }
 
-void InputComponent::processInput(const struct InputState& inputState)
+void InputComponent::processInput(const InputState& inputState)
 {
 	float forwardSpeed = 0.0f;
-	if (inputState.keyboard.GetKeyState(forwardKey) == ButtonState::Held)
+	if (inputState.keyboard.getKeyState(forwardKey) == ButtonState::Held)
 	{
 		forwardSpeed += maxForwardSpeed;
 	}
-	if (inputState.keyboard.GetKeyState(backKey) == ButtonState::Held)
+	if (inputState.keyboard.getKeyState(backKey) == ButtonState::Held)
 	{
 		forwardSpeed -= maxForwardSpeed;
 	}
-	SetForwardSpeed(forwardSpeed);
+	setForwardSpeed(forwardSpeed);
 
 	float angularSpeed = 0.0f;
-	if (inputState.keyboard.GetKeyState(clockwiseKey) == ButtonState::Held)
+	if (inputState.keyboard.getKeyState(clockwiseKey) == ButtonState::Held)
 	{
 		angularSpeed -= maxAngularSpeed;
 	}
-	if (inputState.keyboard.GetKeyState(counterClockwiseKey) == ButtonState::Held)
+	if (inputState.keyboard.getKeyState(counterClockwiseKey) == ButtonState::Held)
 	{
 		angularSpeed += maxAngularSpeed;
 	}
-	SetAngularSpeed(angularSpeed);
+	setAngularSpeed(angularSpeed);
 }
 
 void InputComponent::setMaxForwardSpeed(float maxForwardSpeedP)

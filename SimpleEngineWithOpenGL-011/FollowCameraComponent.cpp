@@ -1,7 +1,7 @@
 #include "FollowCameraComponent.h"
 #include "Actor.h"
 
-FollowCameraComponent::FollowCameraComponent(Actor* ownerP) :
+FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 	CameraComponent(ownerP),
 	horizontalDistance(FOLLOW_HORIZONTAL_DISTANCE),
 	verticalDistance(FOLLOW_VERTICAL_DISTANCE),
@@ -10,9 +10,9 @@ FollowCameraComponent::FollowCameraComponent(Actor* ownerP) :
 {
 }
 
-void FollowCameraComponent::Update(float dt)
+void FollowCameraComponent::update(float dt)
 {
-	CameraComponent::Update(dt);
+	CameraComponent::update(dt);
 
 	float dampening = 2.0f * Maths::sqrt(springConstant);
 	Vector3 idealPosition = computeCameraPosition();
@@ -23,34 +23,34 @@ void FollowCameraComponent::Update(float dt)
 
 	Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
 	Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
-	SetViewMatrix(view);
+	setViewMatrix(view);
 }
 
-void FollowCameraComponent::SnapToIdeal()
+void FollowCameraComponent::snapToIdeal()
 {
 	actualPosition = computeCameraPosition();
 	velocity = Vector3::zero;
 	Vector3 target = owner.getPosition() + owner.getForward() * targetDistance;
 	Matrix4 view = Matrix4::createLookAt(actualPosition, target, Vector3::unitZ);
-	SetViewMatrix(view);
+	setViewMatrix(view);
 }
 
-void FollowCameraComponent::SetHorizontalDistance(float distance)
+void FollowCameraComponent::setHorizontalDistance(float distance)
 {
 	horizontalDistance = distance;
 }
 
-void FollowCameraComponent::SetVerticalDistance(float distance)
+void FollowCameraComponent::setVerticalDistance(float distance)
 {
 	verticalDistance = distance;
 }
 
-void FollowCameraComponent::SetTargetDistance(float distance)
+void FollowCameraComponent::setTargetDistance(float distance)
 {
 	targetDistance = distance;
 }
 
-void FollowCameraComponent::SetSpringConstant(float springConstantP)
+void FollowCameraComponent::setSpringConstant(float springConstantP)
 {
 	springConstant = springConstantP;
 }
@@ -58,7 +58,7 @@ void FollowCameraComponent::SetSpringConstant(float springConstantP)
 Vector3 FollowCameraComponent::computeCameraPosition() const
 {
 	Vector3 cameraPosition = owner.getPosition();
-	cameraPosition -= owner.getPosition();
+	cameraPosition -= owner.getForward() * horizontalDistance;
 	cameraPosition += Vector3::unitZ * verticalDistance;
 	return cameraPosition;
 }

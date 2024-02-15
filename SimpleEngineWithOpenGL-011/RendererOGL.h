@@ -15,29 +15,38 @@ public:
 	RendererOGL(const RendererOGL&) = delete;
 	RendererOGL& operator=(const RendererOGL&) = delete;
 
-	bool Initialize(Window& window);
-	void BeginDraw();
-	void Draw();
-	void EndDraw();
-	void Close();
+	bool initialize(Window& window);
+	void beginDraw();
+	void draw();
+	void endDraw();
+	void close();
 	IRenderer::Type type() { return Type::OGL; }
 
-	void AddSprite(class SpriteComponent* sprite);
-	void RemoveSprite(class SpriteComponent* sprite);
-	void DrawSprite(const Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void addSprite(class SpriteComponent* sprite);
+	void removeSprite(class SpriteComponent* sprite);
+	void drawSprite(const class Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
 
-	void AddMesh(class MeshComponent* mesh);
-	void RemoveMesh(class MeshComponent* mesh);
+	void addMesh(class MeshComponent* mesh);
+	void removeMesh(class MeshComponent* mesh);
 
-	DirectionalLight& GetDirectionalLight() { return dirLight; }
+	DirectionalLight& getDirectionalLight() { return dirLight; }
 
-	void SetViewMatrix(const Matrix4& viewP);
-	void SetLightUniforms(Shader& shader);
-	void SetAmbientLight(const Vector3& ambientP);
+	void setViewMatrix(const Matrix4& viewP);
+	void setLightUniforms(Shader& shader);
+	void setAmbientLight(const Vector3& ambientP);
+
+	// Given a screen space point, unprojects it into world space,
+	// based on the current 3D view/projection matrices
+	// Expected ranges:
+	// x = [-screenWidth/2, +screenWidth/2]
+	// y = [-screenHeight/2, +screenHeight/2]
+	// z = [0, 1) -- 0 is closer to camera, 1 is further
+	Vector3 unproject(const Vector3& screenPoint) const;
+	void getScreenDirection(Vector3& outStart, Vector3& outDir) const;
 
 private:
-	void DrawMeshes();
-	void DrawSprites();
+	void drawMeshes();
+	void drawSprites();
 
 	Window* window;
 	SDL_GLContext context;

@@ -14,12 +14,12 @@ public:
 	virtual void setTexture(const Texture& textureP);
 	virtual void draw(IRenderer& renderer);
 
-	int GetDrawOrder() const { return drawOrder; }
-	int GetTexWidth() const { return texWidth; }
-	int GetTexHeight() const { return texHeight; }
-	int GetVisible() const { return isVisible; }
+	int getDrawOrder() const { return drawOrder; }
+	int getTexWidth() const { return texWidth; }
+	int getTexHeight() const { return texHeight; }
+	int getVisible() const { return isVisible; }
 
-	void SetVisible(bool isVisibleP);
+	void setVisible(bool isVisibleP);
 
 protected:
 	Texture texture;

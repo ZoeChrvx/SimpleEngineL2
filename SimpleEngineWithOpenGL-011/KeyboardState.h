@@ -5,8 +5,9 @@ class KeyboardState
 {
 	friend class InputSystem;
 
-public: bool GetKeyValue(SDL_Scancode key) const;
-	  enum class ButtonState GetKeyState(SDL_Scancode key)const;
+public:
+	bool getKeyValue(SDL_Scancode key) const;
+	enum class ButtonState getKeyState(SDL_Scancode key) const;
 
 private:
 	const Uint8* currentState;

@@ -147,17 +147,17 @@ public:
 
 	Vector3 getXAxis() const
 	{
-		return Vector3::Normalize(Vector3(mat[0][0], mat[0][1], mat[0][2]));
+		return Vector3::normalize(Vector3(mat[0][0], mat[0][1], mat[0][2]));
 	}
 
 	Vector3 getYAxis() const
 	{
-		return Vector3::Normalize(Vector3(mat[1][0], mat[1][1], mat[1][2]));
+		return Vector3::normalize(Vector3(mat[1][0], mat[1][1], mat[1][2]));
 	}
 
 	Vector3 getZAxis() const
 	{
-		return Vector3::Normalize(Vector3(mat[2][0], mat[2][1], mat[2][2]));
+		return Vector3::normalize(Vector3(mat[2][0], mat[2][1], mat[2][2]));
 	}
 
 	Vector3 getScale() const
@@ -280,9 +280,9 @@ public:
 
 	static Matrix4 createLookAt(const Vector3& eye, const Vector3& target, const Vector3& up)
 	{
-		Vector3 zaxis = Vector3::Normalize(target - eye);
-		Vector3 xaxis = Vector3::Normalize(Vector3::cross(up, zaxis));
-		Vector3 yaxis = Vector3::Normalize(Vector3::cross(zaxis, xaxis));
+		Vector3 zaxis = Vector3::normalize(target - eye);
+		Vector3 xaxis = Vector3::normalize(Vector3::cross(up, zaxis));
+		Vector3 yaxis = Vector3::normalize(Vector3::cross(zaxis, xaxis));
 		Vector3 trans;
 		trans.x = -Vector3::dot(xaxis, eye);
 		trans.y = -Vector3::dot(yaxis, eye);

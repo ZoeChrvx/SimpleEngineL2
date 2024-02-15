@@ -7,37 +7,40 @@
 OrbitActor::OrbitActor() : Actor(), cameraComponent(nullptr), meshComponent(nullptr)
 {
 	meshComponent = new MeshComponent(this);
-	meshComponent->SetMesh(Assets::getMesh("Mesh_RacingCar"));
-	SetPosition(Vector3(0.0f, 0.0f, -100.0f));
+	meshComponent->setMesh(Assets::getMesh("Mesh_RacingCar"));
+	setPosition(Vector3(0.0f, 0.0f, -100.0f));
 	cameraComponent = new OrbitCameraComponent(this);
 }
 
-void OrbitActor::ActorInput(const InputState& inputState)
+void OrbitActor::actorInput(const InputState& inputState)
 {
-	Vector2 mousePosition = inputState.mouse.GetPosition();
+	Vector2 mousePosition = inputState.mouse.getPosition();
 	float x = mousePosition.x;
 	float y = mousePosition.y;
-	if (inputState.mouse.GetButtonState(3) == ButtonState::Held) {
+	if (inputState.mouse.getButtonState(3) == ButtonState::Held)
+	{
 		const float maxMouseSpeed = 500.0f;
 		const float maxOrbitSpeed = Maths::pi * 8;
 
 		float yawSpeed = 0.0f;
-		if (!Maths::nearZero(x)) {
+		if (!Maths::nearZero(x))
+		{
 			yawSpeed = x / maxMouseSpeed;
 			yawSpeed *= maxOrbitSpeed;
 		}
-		cameraComponent->SetYawSpeed(yawSpeed);
+		cameraComponent->setYawSpeed(yawSpeed);
 
 		float pitchSpeed = 0.0f;
-		if (!Maths::nearZero(y)) {
+		if (!Maths::nearZero(y))
+		{
 			pitchSpeed = y / maxMouseSpeed;
 			pitchSpeed *= maxOrbitSpeed;
 		}
-		cameraComponent->SetPitchSpeed(pitchSpeed);
+		cameraComponent->setPitchSpeed(pitchSpeed);
 	}
 }
 
-void OrbitActor::SetVisible(bool visible)
+void OrbitActor::setVisible(bool visible)
 {
-	meshComponent->SetVisible(visible);
+	meshComponent->setVisible(visible);
 }

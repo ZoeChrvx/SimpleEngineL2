@@ -28,19 +28,22 @@ public:
 	const float getScale() const { return scale; }
 	const Quaternion getRotation() const { return rotation; }
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
-	Vector3 getRight() const;
 
-	void SetPosition(Vector3 positionP);
-	void SetScale(float scaleP);
-	void SetRotation(Quaternion rotationP);
-	void SetState(ActorState stateP);
+	void setPosition(Vector3 positionP);
+	void setScale(float scaleP);
+	void setRotation(Quaternion rotationP);
+	void setState(ActorState stateP);
 
+	void setAngle(const Vector3& axis, float angle);
+	void rotate(const Vector3& axis, float angle);
 	Vector3 getForward() const;
-	void ComputeWorldTransform();
+	Vector3 getRight() const;
+	void computeWorldTransform();
+	void rotateToNewForward(const Vector3& newForward);
 
-	void ProcessInput(const struct InputState& inputState);
-	virtual void ActorInput(const struct InputState& inputState);
-	void Update(float dt);
+	void processInput(const struct InputState& inputState);
+	virtual void actorInput(const struct InputState& inputState);
+	void update(float dt);
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);

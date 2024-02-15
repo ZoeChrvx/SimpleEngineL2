@@ -7,7 +7,7 @@ Camera::Camera() : Actor(), moveComponent(nullptr)
 	moveComponent = new MoveComponent(this);
 }
 
-void Camera::UpdateActor(float deltaTime)
+void Camera::updateActor(float deltaTime)
 {
 	Actor::updateActor(deltaTime);
 
@@ -17,31 +17,32 @@ void Camera::UpdateActor(float deltaTime)
 	Vector3 up = Vector3::unitZ;
 
 	Matrix4 view = Matrix4::createLookAt(cameraPos, target, up);
-	getGame().GetRenderer().SetViewMatrix(view);
+	getGame().getRenderer().setViewMatrix(view);
 }
 
-void Camera::ActorInput(const struct InputState& inputState)
+void Camera::actorInput(const struct InputState& inputState)
 {
 	float forwardSpeed = 0.0f;
 	float angularSpeed = 0.0f;
+
 	// wasd movement
-	if (inputState.keyboard.GetKeyValue(SDL_SCANCODE_W))
+	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_W))
 	{
 		forwardSpeed += 300.0f;
 	}
-	if (inputState.keyboard.GetKeyValue(SDL_SCANCODE_S))
+	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_S))
 	{
 		forwardSpeed -= 300.0f;
 	}
-	if (inputState.keyboard.GetKeyValue(SDL_SCANCODE_A))
+	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_A))
 	{
 		angularSpeed -= Maths::twoPi;
 	}
-	if (inputState.keyboard.GetKeyValue(SDL_SCANCODE_D))
+	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_D))
 	{
 		angularSpeed += Maths::twoPi;
 	}
 
-	moveComponent->SetForwardSpeed(forwardSpeed);
-	moveComponent->SetAngularSpeed(angularSpeed);
+	moveComponent->setForwardSpeed(forwardSpeed);
+	moveComponent->setAngularSpeed(angularSpeed);
 }
