@@ -7,14 +7,14 @@ BackgroundSpriteComponent::BackgroundSpriteComponent(Actor* ownerP, const vector
 	scrollSpeed(0.0f),
 	screenSize(Vector2(WINDOW_WIDTH, WINDOW_HEIGHT))
 {
-	setTextures(texturesP);
+	SetTextures(texturesP);
 }
 
 BackgroundSpriteComponent::~BackgroundSpriteComponent()
 {
 }
 
-void BackgroundSpriteComponent::update(float dt)
+void BackgroundSpriteComponent::Update(float dt)
 {
 	SpriteComponent::Update(dt);
 	for (auto& bg : textures)
@@ -29,17 +29,17 @@ void BackgroundSpriteComponent::update(float dt)
 	}
 }
 
-void BackgroundSpriteComponent::draw(IRenderer& renderer)
+void BackgroundSpriteComponent::Draw(IRenderer& renderer)
 {
 	// Draw each background texture
 	for (auto& bg : textures)
 	{
-		owner.setPosition(Vector3(0.0f, bg.offset.x, bg.offset.y));
-		renderer.drawSprite(owner, bg.texture, Rectangle::nullRect, Vector2(-screenSize.x / 2, -screenSize.y / 2), IRenderer::Flip::None);
+		owner.SetPosition(Vector3(0.0f, bg.offset.x, bg.offset.y));
+		renderer.DrawSprite(owner, bg.texture, Rectangle::nullRect, Vector2(-screenSize.x / 2, -screenSize.y / 2), IRenderer::Flip::None);
 	}
 }
 
-void BackgroundSpriteComponent::setTextures(const vector<Texture*>& texturesP)
+void BackgroundSpriteComponent::SetTextures(const vector<Texture*>& texturesP)
 {
 	int count = 0;
 	for (auto tex : texturesP)
@@ -50,12 +50,12 @@ void BackgroundSpriteComponent::setTextures(const vector<Texture*>& texturesP)
 	}
 }
 
-void BackgroundSpriteComponent::setScreenSize(const Vector2& screenSizeP)
+void BackgroundSpriteComponent::SetScreenSize(const Vector2& screenSizeP)
 {
 	screenSize = screenSizeP;
 }
 
-void BackgroundSpriteComponent::setScrollSpeed(float scrollSpeedP)
+void BackgroundSpriteComponent::SetScrollSpeed(float scrollSpeedP)
 {
 	scrollSpeed = scrollSpeedP;
 }

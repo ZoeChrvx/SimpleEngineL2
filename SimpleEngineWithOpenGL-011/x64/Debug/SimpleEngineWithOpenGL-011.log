@@ -1,54 +1,37 @@
-﻿  Actor.cpp
-  AnimSpriteComponent.cpp
-  BackgroundSpriteComponent.cpp
-  Camera.cpp
-  CircleCollisionComponent.cpp
-  Component.cpp
-  ControllerState.cpp
+﻿  Assets.cpp
+D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Assets.cpp(262,33): warning C4244: 'argument' : conversion de 'double' en 'const unsigned __int64', perte possible de données
+D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Assets.cpp(279,168): warning C4267: 'argument' : conversion de 'size_t' en 'unsigned int', perte possible de données
   Cube.cpp
+  FPSActor.cpp
   Game.cpp
-  InputComponent.cpp
-  InputSystem.cpp
-  KeyboardState.cpp
-  Main.cpp
-  Matrix4.cpp
   Mesh.cpp
   MeshComponent.cpp
-D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\MeshComponent.cpp(23,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  MouseState.cpp
-  MoveComponent.cpp
+D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\MeshComponent.cpp(23,45): warning C4267: 'argument' : conversion de 'size_t' en 'int', perte possible de données
   Plane.cpp
-  Quaternion.cpp
-  Generating Code...
-  Compiling...
   RendererOGL.cpp
-  Assets.cpp
-D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Assets.cpp(262,33): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Assets.cpp(279,98): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Shader.cpp
   Sphere.cpp
-  SpriteComponent.cpp
-  Texture.cpp
-  Vector2.cpp
-  Vector3.cpp
-  Window.cpp
-  Generating Code...
-  SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Cube.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Plane.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Cube.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Default.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\HealthBar.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Plane.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
-  17 File(s) copied
+  Génération de code en cours...
+  SimpleEngineWithOpenGL-011.vcxproj -> D:\Artfx\Programmation\C++\SimpleEngineL2\x64\Debug\SimpleEngineWithOpenGL-011.exe
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Cube.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Plane.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\RacingCar.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Rifle.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Crosshair.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Cube.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Default.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\HealthBar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Plane.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\RacingCar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Rifle.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
+  22 fichier(s) copié(s)

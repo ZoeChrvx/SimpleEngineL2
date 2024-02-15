@@ -12,12 +12,12 @@ Actor::Actor() :
 	mustRecomputeWorldTransform(true),
 	game(Game::instance())
 {
-	game.addActor(this);
+	game.AddActor(this);
 }
 
 Actor::~Actor()
 {
-	game.removeActor(this);
+	game.RemoveActor(this);
 	// Need to delete components
 	// Because ~Component calls RemoveComponent, need a different style loop
 	while (!components.empty())
@@ -26,19 +26,19 @@ Actor::~Actor()
 	}
 }
 
-void Actor::setPosition(Vector3 positionP)
+void Actor::SetPosition(Vector3 positionP)
 {
 	position = positionP;
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::setScale(float scaleP)
+void Actor::SetScale(float scaleP)
 {
 	scale = scaleP;
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::setRotation(Quaternion rotationP)
+void Actor::SetRotation(Quaternion rotationP)
 {
 	rotation = rotationP;
 	mustRecomputeWorldTransform = true;
@@ -54,7 +54,7 @@ Vector3 Actor::getForward() const
 	return Vector3::transform(Vector3::unitX, rotation);
 }
 
-void Actor::computeWorldTransform()
+void Actor::ComputeWorldTransform()
 {
 	if (mustRecomputeWorldTransform)
 	{
@@ -65,18 +65,18 @@ void Actor::computeWorldTransform()
 
 		for (auto component : components)
 		{
-			component->onUpdateWorldTransform();
+			component->OnUpdateWorldTransform();
 		}
 	}
 }
 
-void Actor::processInput(const struct InputState& inputState)
+void Actor::ProcessInput(const struct InputState& inputState)
 {
 	if (state == Actor::ActorState::Active)
 	{
 		for (auto component : components)
 		{
-			component->processInput(inputState);
+			component->ProcessInput(inputState);
 		}
 		actorInput(inputState);
 	}
@@ -86,14 +86,14 @@ void Actor::actorInput(const struct InputState& inputState)
 {
 }
 
-void Actor::update(float dt)
+void Actor::Update(float dt)
 {
 	if (state == Actor::ActorState::Active)
 	{
-		computeWorldTransform();
+		ComputeWorldTransform();
 		updateComponents(dt);
 		updateActor(dt);
-		computeWorldTransform();
+		ComputeWorldTransform();
 	}
 }
 
@@ -113,11 +113,11 @@ void Actor::addComponent(Component* component)
 {
 	// Find the insertion point in the sorted vector
 	// (The first element with a order higher than me)
-	int myOrder = component->getUpdateOrder();
+	int myOrder = component->GetUpdateOrder();
 	auto iter = begin(components);
 	for (; iter != end(components); ++iter)
 	{
-		if (myOrder < (*iter)->getUpdateOrder())
+		if (myOrder < (*iter)->GetUpdateOrder())
 		{
 			break;
 		}

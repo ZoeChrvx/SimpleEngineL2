@@ -7,5 +7,5 @@ CameraComponent::CameraComponent(Actor* owner, int updateOrder) :
 
 void CameraComponent::SetViewMatrix(const Matrix4& view) {
 	Game& game = owner.getGame();
-	game.getRenderer().setViewMatrix(view);
+	game.GetRenderer().SetViewMatrix(view);
 }

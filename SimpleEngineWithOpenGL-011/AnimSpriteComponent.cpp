@@ -5,14 +5,14 @@ AnimSpriteComponent::AnimSpriteComponent(Actor* ownerP, const vector<Texture*>& 
 	currentFrame(0.0f),
 	animFPS(24.0f)
 {
-	setAnimTextures(textureP);
+	SetAnimTextures(textureP);
 }
 
 AnimSpriteComponent::~AnimSpriteComponent()
 {
 }
 
-void AnimSpriteComponent::setAnimTextures(const vector<Texture*>& texturesP)
+void AnimSpriteComponent::SetAnimTextures(const vector<Texture*>& texturesP)
 {
 	animTextures = texturesP;
 	if (animTextures.size() > 0)
@@ -22,12 +22,12 @@ void AnimSpriteComponent::setAnimTextures(const vector<Texture*>& texturesP)
 	}
 }
 
-void AnimSpriteComponent::setAnimFPS(float animFPSP)
+void AnimSpriteComponent::SetAnimFPS(float animFPSP)
 {
 	animFPS = animFPSP;
 }
 
-void AnimSpriteComponent::update(float dt)
+void AnimSpriteComponent::Update(float dt)
 {
 	SpriteComponent::Update(dt);
 

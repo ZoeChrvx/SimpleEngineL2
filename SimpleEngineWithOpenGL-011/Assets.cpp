@@ -10,13 +10,13 @@ std::map<std::string, Texture> Assets::textures;
 std::map<std::string, Shader> Assets::shaders;
 std::map<std::string, Mesh> Assets::meshes;
 
-Texture Assets::loadTexture(IRenderer& renderer, const string& filename, const string& name)
+Texture Assets::LoadTexture(IRenderer& renderer, const string& filename, const string& name)
 {
     textures[name] = loadTextureFromFile(renderer, filename.c_str());
     return textures[name];
 }
 
-Texture& Assets::getTexture(const string& name) 
+Texture& Assets::GetTexture(const string& name) 
 {
     if (textures.find(name) == end(textures))
     {
@@ -27,7 +27,7 @@ Texture& Assets::getTexture(const string& name)
     return textures[name];
 }
 
-Shader Assets::loadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& tcShaderFile, const std::string& teShaderFile, const std::string& gShaderFile, const std::string& name)
+Shader Assets::LoadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& tcShaderFile, const std::string& teShaderFile, const std::string& gShaderFile, const std::string& name)
 {
     shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, tcShaderFile, teShaderFile, gShaderFile);
     return shaders[name];
@@ -44,7 +44,7 @@ Shader& Assets::getShader(const std::string& name)
     return shaders[name];
 }
 
-Mesh Assets::loadMesh(const string& filename, const string& name)
+Mesh Assets::LoadMesh(const string& filename, const string& name)
 {
     meshes[name] = loadMeshFromFile(filename);
     return meshes[name];
@@ -209,7 +209,7 @@ Mesh Assets::loadMeshFromFile(const string& filename)
 	for (rapidjson::SizeType i = 0; i < textures.Size(); i++)
 	{
 		std::string texName = textures[i].GetString();
-		Texture& t = getTexture(texName);
+		Texture& t = GetTexture(texName);
 		mesh.addTexture(&t);
 	}
 

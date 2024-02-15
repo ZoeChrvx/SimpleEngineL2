@@ -13,13 +13,13 @@ public:
 	BackgroundSpriteComponent(const BackgroundSpriteComponent&) = delete;
 	BackgroundSpriteComponent& operator=(const BackgroundSpriteComponent&) = delete;
 
-	float getScrollSpeed() const { return scrollSpeed; }
-	void setTextures(const vector<Texture*>& textures);
-	void setScreenSize(const Vector2& screenSizeP);
-	void setScrollSpeed(float scrollSpeedP);
+	float GetScrollSpeed() const { return scrollSpeed; }
+	void SetTextures(const vector<Texture*>& textures);
+	void SetScreenSize(const Vector2& screenSizeP);
+	void SetScrollSpeed(float scrollSpeedP);
 
-	void update(float dt) override;
-	void draw(IRenderer& renderer) override;
+	void Update(float dt) override;
+	void Draw(IRenderer& renderer);
 
 private:
 	// Struct to encapsulate each bg image and its offset

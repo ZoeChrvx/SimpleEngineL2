@@ -15,29 +15,29 @@ public:
 	RendererOGL(const RendererOGL&) = delete;
 	RendererOGL& operator=(const RendererOGL&) = delete;
 
-	bool initialize(Window& window);
-	void beginDraw();
-	void draw();
-	void endDraw();
-	void close();
+	bool Initialize(Window& window);
+	void BeginDraw();
+	void Draw();
+	void EndDraw();
+	void Close();
 	IRenderer::Type type() { return Type::OGL; }
 
-	void addSprite(class SpriteComponent* sprite);
-	void removeSprite(class SpriteComponent* sprite);
-	void drawSprite(const Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
+	void AddSprite(class SpriteComponent* sprite);
+	void RemoveSprite(class SpriteComponent* sprite);
+	void DrawSprite(const Actor& actor, const class Texture& tex, struct Rectangle srcRect, Vector2 origin, Flip flip) const;
 
-	void addMesh(class MeshComponent* mesh);
-	void removeMesh(class MeshComponent* mesh);
+	void AddMesh(class MeshComponent* mesh);
+	void RemoveMesh(class MeshComponent* mesh);
 
-	DirectionalLight& getDirectionalLight() { return dirLight; }
+	DirectionalLight& GetDirectionalLight() { return dirLight; }
 
-	void setViewMatrix(const Matrix4& viewP);
-	void setLightUniforms(Shader& shader);
-	void setAmbientLight(const Vector3& ambientP);
+	void SetViewMatrix(const Matrix4& viewP);
+	void SetLightUniforms(Shader& shader);
+	void SetAmbientLight(const Vector3& ambientP);
 
 private:
-	void drawMeshes();
-	void drawSprites();
+	void DrawMeshes();
+	void DrawSprites();
 
 	Window* window;
 	SDL_GLContext context;

@@ -7,8 +7,8 @@ class FPSActor : public Actor
 public:
 	FPSActor();
 
-	void UpdateActor(float dt) override;
-	void ActorInput(const struct InputState& inputState) override;
+	void UpdateActor(float dt);
+	void ActorInput(const struct InputState& inputState);
 
 	void SetVisible(bool isVisible);
 

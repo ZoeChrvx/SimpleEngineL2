@@ -20,7 +20,7 @@ public:
 	float getSpecularPower() const { return specularPower; }
 
 	void addTexture(Texture* texture);
-	Texture* getTexture(int index);
+	Texture* GetTexture(int index);
 
 	void setVertexArray(VertexArray* vertexArrayP);
 	void setShaderName(const string& shaderNameP);

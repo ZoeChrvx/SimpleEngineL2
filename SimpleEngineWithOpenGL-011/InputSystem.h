@@ -33,7 +33,7 @@ public:
 	void PreUpdate();
 	void Update();
 
-	bool getIsCursorDisplayed() const { return isCursorDisplayed; }
+	bool GetIsCursorDisplayed() const { return isCursorDisplayed; }
 	void SetMouseCursor(bool isCursorsDisplayedP);
 	void SetMouseRelativeMode(bool isMouseRelativeOnP);
 

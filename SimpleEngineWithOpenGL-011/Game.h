@@ -25,23 +25,23 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), camera(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
 
 public:
-	bool initialize();
-	void load();
-	void loop();
-	void unload();
-	void close();
+	bool Initialize();
+	void Load();
+	void Loop();
+	void Unload();
+	void Close();
 
-	void addActor(Actor* actor);
-	void removeActor(Actor* actor);
-	RendererOGL& getRenderer() { return renderer; }
+	void AddActor(Actor* actor);
+	void RemoveActor(Actor* actor);
+	RendererOGL& GetRenderer() { return renderer; }
 
 private:
-	void processInput();
-	void update(float dt);
-	void render();
+	void ProcessInput();
+	void Update(float dt);
+	void Render();
 
 	bool isRunning;
 	Window window;
@@ -50,7 +50,9 @@ private:
 	bool isUpdatingActors;
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
-	Camera* camera;
+
+	class FPSActor* fps;
+	class SpriteComponent* crosshair;
 
 	InputSystem inputSystem;
 };

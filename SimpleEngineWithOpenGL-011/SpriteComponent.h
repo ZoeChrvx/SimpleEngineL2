@@ -14,14 +14,18 @@ public:
 	virtual void setTexture(const Texture& textureP);
 	virtual void draw(IRenderer& renderer);
 
-	int getDrawOrder() const { return drawOrder; }
-	int getTexWidth() const { return texWidth; }
-	int getTexHeight() const { return texHeight; }
+	int GetDrawOrder() const { return drawOrder; }
+	int GetTexWidth() const { return texWidth; }
+	int GetTexHeight() const { return texHeight; }
+	int GetVisible() const { return isVisible; }
+
+	void SetVisible(bool isVisibleP);
 
 protected:
 	Texture texture;
 	int drawOrder;
 	int texWidth;
 	int texHeight;
+	bool isVisible;
 };
 

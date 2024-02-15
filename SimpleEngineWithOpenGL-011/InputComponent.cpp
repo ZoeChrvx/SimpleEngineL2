@@ -24,7 +24,7 @@ void InputComponent::processInput(const struct InputState& inputState)
 	{
 		forwardSpeed -= maxForwardSpeed;
 	}
-	setForwardSpeed(forwardSpeed);
+	SetForwardSpeed(forwardSpeed);
 
 	float angularSpeed = 0.0f;
 	if (inputState.keyboard.GetKeyState(clockwiseKey) == ButtonState::Held)
@@ -35,7 +35,7 @@ void InputComponent::processInput(const struct InputState& inputState)
 	{
 		angularSpeed += maxAngularSpeed;
 	}
-	setAngularSpeed(angularSpeed);
+	SetAngularSpeed(angularSpeed);
 }
 
 void InputComponent::setMaxForwardSpeed(float maxForwardSpeedP)

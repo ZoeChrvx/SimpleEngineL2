@@ -17,7 +17,7 @@ void Camera::updateActor(float deltaTime)
 	Vector3 up = Vector3::unitZ;
 
 	Matrix4 view = Matrix4::createLookAt(cameraPos, target, up);
-	getGame().getRenderer().setViewMatrix(view);
+	getGame().GetRenderer().SetViewMatrix(view);
 }
 
 void Camera::actorInput(const struct InputState& inputState)
@@ -42,6 +42,6 @@ void Camera::actorInput(const struct InputState& inputState)
 		angularSpeed += Maths::twoPi;
 	}
 
-	moveComponent->setForwardSpeed(forwardSpeed);
-	moveComponent->setAngularSpeed(angularSpeed);
+	moveComponent->SetForwardSpeed(forwardSpeed);
+	moveComponent->SetAngularSpeed(angularSpeed);
 }

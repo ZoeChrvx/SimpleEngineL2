@@ -9,17 +9,17 @@ MoveComponent::MoveComponent(Actor* ownerP, int updateOrderP)
 
 }
 
-void MoveComponent::setForwardSpeed(float forwardSpeedP)
+void MoveComponent::SetForwardSpeed(float forwardSpeedP)
 {
 	forwardSpeed = forwardSpeedP;
 }
 
-void MoveComponent::setAngularSpeed(float angularSpeedP)
+void MoveComponent::SetAngularSpeed(float angularSpeedP)
 {
 	angularSpeed = angularSpeedP;
 }
 
-void MoveComponent::setStrafeSpeed(float strafeSpeedP) {
+void MoveComponent::SetStrafeSpeed(float strafeSpeedP) {
 	strafeSpeed = strafeSpeedP;
 }
 
@@ -30,14 +30,14 @@ void MoveComponent::Update(float dt)
 		Quaternion newRotation = owner.getRotation();
 		float angle = angularSpeed * dt;
 		Quaternion increment(Vector3::unitZ, angle);
-		newRotation = Quaternion::concatenate(newRotation, increment);
-		owner.setRotation(newRotation);
+		newRotation = Quaternion::Concatenate(newRotation, increment);
+		owner.SetRotation(newRotation);
 	}
 	if (!Maths::nearZero(forwardSpeed)|| !Maths::nearZero(strafeSpeed))
 	{
 		Vector3 newPosition = owner.getPosition();
 		newPosition += owner.getForward() * forwardSpeed * dt;
 		newPosition += owner.getRight() * strafeSpeed * dt;
-		owner.setPosition(newPosition);
+		owner.SetPosition(newPosition);
 	}
 }

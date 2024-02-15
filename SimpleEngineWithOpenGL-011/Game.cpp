@@ -6,44 +6,52 @@
 #include "Cube.h"
 #include "Sphere.h"
 #include "Plane.h"
+#include "FPSActor.h"
 
-bool Game::initialize()
+bool Game::Initialize()
 {
-	bool isWindowInit = window.initialize();
-	bool isRendererInit = renderer.initialize(window);
+	bool isWindowInit = window.Initialize();
+	bool isRendererInit = renderer.Initialize(window);
 	bool isInputInit = inputSystem.Initialize();
 	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
 }
 
-void Game::load()
+void Game::Load()
 {
-	Assets::loadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
-	Assets::loadShader("Res\\Shaders\\BasicMesh.vert", "Res\\Shaders\\BasicMesh.frag", "", "", "", "BasicMesh");
-	Assets::loadShader("Res\\Shaders\\Phong.vert", "Res\\Shaders\\Phong.frag", "", "", "", "Phong");
+	inputSystem.SetMouseRelativeMode(true);
 
-	Assets::loadTexture(renderer, "Res\\Textures\\Default.png", "Default");
-	Assets::loadTexture(renderer, "Res\\Textures\\Cube.png", "Cube");
-	Assets::loadTexture(renderer, "Res\\Textures\\HealthBar.png", "HealthBar");
-	Assets::loadTexture(renderer, "Res\\Textures\\Plane.png", "Plane");
-	Assets::loadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
-	Assets::loadTexture(renderer, "Res\\Textures\\Sphere.png", "Sphere");
+	Assets::LoadShader("Res\\Shaders\\Sprite.vert", "Res\\Shaders\\Sprite.frag", "", "", "", "Sprite");
+	Assets::LoadShader("Res\\Shaders\\BasicMesh.vert", "Res\\Shaders\\BasicMesh.frag", "", "", "", "BasicMesh");
+	Assets::LoadShader("Res\\Shaders\\Phong.vert", "Res\\Shaders\\Phong.frag", "", "", "", "Phong");
+
+	Assets::LoadTexture(renderer, "Res\\Textures\\Default.png", "Default");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Cube.png", "Cube");
+	Assets::LoadTexture(renderer, "Res\\Textures\\HealthBar.png", "HealthBar");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Plane.png", "Plane");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Radar.png", "Radar");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Sphere.png", "Sphere");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Crosshair.png", "Crosshair");
+	Assets::LoadTexture(renderer, "Res\\Textures\\RacingCar.png", "RacingCar");
+	Assets::LoadTexture(renderer, "Res\\Textures\\Rifle.png", "Rifle");
 	
-	Assets::loadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
-	Assets::loadMesh("Res\\Meshes\\Plane.gpmesh", "Mesh_Plane");
-	Assets::loadMesh("Res\\Meshes\\Sphere.gpmesh", "Mesh_Sphere");
+	Assets::LoadMesh("Res\\Meshes\\Cube.gpmesh", "Mesh_Cube");
+	Assets::LoadMesh("Res\\Meshes\\Plane.gpmesh", "Mesh_Plane");
+	Assets::LoadMesh("Res\\Meshes\\Sphere.gpmesh", "Mesh_Sphere");
+	Assets::LoadMesh("Res\\Meshes\\Rifle.gpmesh", "Mesh_Rifle");
+	Assets::LoadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	
-	camera = new Camera();
+	fps = new FPSActor();
 
 	Cube* a = new Cube();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
-	a->setScale(100.0f);
+	a->SetPosition(Vector3(200.0f, 105.0f, 0.0f));
+	a->SetScale(100.0f);
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
-	a->setRotation(q);
+	q = Quaternion::Concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+	a->SetRotation(q);
 	
 	Sphere* b = new Sphere();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);
+	b->SetPosition(Vector3(200.0f, -75.0f, 0.0f));
+	b->SetScale(3.0f);
 
 	// Floor and walls
 
@@ -55,7 +63,7 @@ void Game::load()
 		for (int j = 0; j < 10; j++)
 		{
 			Plane* p = new Plane();
-			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
+			p->SetPosition(Vector3(start + i * size, start + j * size, -100.0f));
 		}
 	}
 
@@ -64,46 +72,42 @@ void Game::load()
 	for (int i = 0; i < 10; i++)
 	{
 		Plane* p = new Plane();
-		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
-		p->setRotation(q);
+		p->SetPosition(Vector3(start + i * size, start - size, 0.0f));
+		p->SetRotation(q);
 
 		p = new Plane();
-		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
-		p->setRotation(q);
+		p->SetPosition(Vector3(start + i * size, -start + size, 0.0f));
+		p->SetRotation(q);
 	}
 
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
+	q = Quaternion::Concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
+	
 	// Forward/back walls
 	for (int i = 0; i < 10; i++)
 	{
 		Plane* p = new Plane();
-		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
-		p->setRotation(q);
+		p->SetPosition(Vector3(start - size, start + i * size, 0.0f));
+		p->SetRotation(q);
 
 		p = new Plane();
-		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
-		p->setRotation(q);
+		p->SetPosition(Vector3(-start + size, start + i * size, 0.0f));
+		p->SetRotation(q);
 	}
 
 	// Setup lights
-	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
-	DirectionalLight& dir = renderer.getDirectionalLight();
+	renderer.SetAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
+	DirectionalLight& dir = renderer.GetDirectionalLight();
 	dir.direction = Vector3(0.0f, -0.707f, -0.707f);
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
-	// UI elements
-	Actor* ui = new Actor();
-	ui->setPosition(Vector3(-350.0f, -350.0f, 0.0f));
-	SpriteComponent* sc = new SpriteComponent(ui, Assets::getTexture("HealthBar"));
-
-	ui = new Actor();
-	ui->setPosition(Vector3(375.0f, -275.0f, 0.0f));
-	ui->setScale(0.75f);
-	sc = new SpriteComponent(ui, Assets::getTexture("Radar"));
+	//Crosshair
+	Actor* crosshairActor = new Actor();
+	crosshairActor->SetScale(2.0f);
+	crosshair = new SpriteComponent(crosshairActor, Assets::GetTexture("CrossHair"));
 }
 
-void Game::processInput()
+void Game::ProcessInput()
 {
 	inputSystem.PreUpdate();
 
@@ -131,25 +135,25 @@ void Game::processInput()
 	isUpdatingActors = true;
 	for (auto actor : actors)
 	{
-		actor->processInput(input);
+		actor->ProcessInput(input);
 	}
 	isUpdatingActors = false;
 }
 
-void Game::update(float dt)
+void Game::Update(float dt)
 {
 	// Update actors 
 	isUpdatingActors = true;
 	for(auto actor: actors) 
 	{
-		actor->update(dt);
+		actor->Update(dt);
 	}
 	isUpdatingActors = false;
 
 	// Move pending actors to actors
 	for (auto pendingActor: pendingActors)
 	{
-		pendingActor->computeWorldTransform();
+		pendingActor->ComputeWorldTransform();
 		actors.emplace_back(pendingActor);
 	}
 	pendingActors.clear();
@@ -169,28 +173,28 @@ void Game::update(float dt)
 	}
 }
 
-void Game::render()
+void Game::Render()
 {
-	renderer.beginDraw();
-	renderer.draw();
-	renderer.endDraw();
+	renderer.BeginDraw();
+	renderer.Draw();
+	renderer.EndDraw();
 }
 
-void Game::loop()
+void Game::Loop()
 {
 	Timer timer;
 	float dt = 0;
 	while (isRunning)
 	{
 		float dt = timer.computeDeltaTime() / 1000.0f;
-		processInput();
-		update(dt);
-		render();
+		ProcessInput();
+		Update(dt);
+		Render();
 		timer.delayTime();
 	}
 }
 
-void Game::unload()
+void Game::Unload()
 {
 	// Delete actors
 	// Because ~Actor calls RemoveActor, have to use a different style loop
@@ -203,15 +207,15 @@ void Game::unload()
 	Assets::clear();
 }
 
-void Game::close()
+void Game::Close()
 {
 	inputSystem.Close();
-	renderer.close();
+	renderer.Close();
 	window.close();
 	SDL_Quit();
 }
 
-void Game::addActor(Actor* actor)
+void Game::AddActor(Actor* actor)
 {
 	if (isUpdatingActors)
 	{
@@ -223,7 +227,7 @@ void Game::addActor(Actor* actor)
 	}
 }
 
-void Game::removeActor(Actor* actor)
+void Game::RemoveActor(Actor* actor)
 {
 	// Erase actor from the two vectors
 	auto iter = std::find(begin(pendingActors), end(pendingActors), actor);

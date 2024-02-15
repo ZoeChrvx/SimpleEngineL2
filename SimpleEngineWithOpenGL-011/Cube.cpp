@@ -5,5 +5,5 @@
 Cube::Cube()
 {
 	MeshComponent* mc = new MeshComponent(this);
-	mc->setMesh(Assets::getMesh("Mesh_Cube"));
+	mc->SetMesh(Assets::getMesh("Mesh_Cube"));
 }

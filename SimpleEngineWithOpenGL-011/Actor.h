@@ -30,17 +30,17 @@ public:
 	const Matrix4& getWorldTransform() const { return worldTransform;  }
 	Vector3 getRight() const;
 
-	void setPosition(Vector3 positionP);
-	void setScale(float scaleP);
-	void setRotation(Quaternion rotationP);
+	void SetPosition(Vector3 positionP);
+	void SetScale(float scaleP);
+	void SetRotation(Quaternion rotationP);
 	void setState(ActorState stateP);
 
 	Vector3 getForward() const;
-	void computeWorldTransform();
+	void ComputeWorldTransform();
 
-	void processInput(const struct InputState& inputState);
+	void ProcessInput(const struct InputState& inputState);
 	virtual void actorInput(const struct InputState& inputState);
-	void update(float dt);
+	void Update(float dt);
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);
 	void addComponent(Component* component);

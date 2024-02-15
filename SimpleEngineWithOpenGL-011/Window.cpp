@@ -5,7 +5,7 @@ Window::Window() : SDLWindow(nullptr), width(WINDOW_WIDTH), height(WINDOW_HEIGHT
 {
 }
 
-bool Window::initialize()
+bool Window::Initialize()
 {
 	int sdlInitResult = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
 	if (sdlInitResult != 0) {

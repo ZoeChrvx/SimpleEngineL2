@@ -9,9 +9,9 @@ public:
 
 	void Update(float dt) override;
 
-	float getPitch() const { return pitch; }
-	float getPitchSpeed() const { return pitchSpeed; }
-	float getMaxPitch() const { return maxPitch; }
+	float GetPitch() const { return pitch; }
+	float GetPitchSpeed() const { return pitchSpeed; }
+	float GetMaxPitch() const { return maxPitch; }
 
 	void SetPitchSpeed(float speed);
 	void SetMaxPitch(float pitch);
