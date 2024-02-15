@@ -33,13 +33,13 @@ public:
 	void SetPosition(Vector3 positionP);
 	void SetScale(float scaleP);
 	void SetRotation(Quaternion rotationP);
-	void setState(ActorState stateP);
+	void SetState(ActorState stateP);
 
 	Vector3 getForward() const;
 	void ComputeWorldTransform();
 
 	void ProcessInput(const struct InputState& inputState);
-	virtual void actorInput(const struct InputState& inputState);
+	virtual void ActorInput(const struct InputState& inputState);
 	void Update(float dt);
 	void updateComponents(float dt);
 	virtual void updateActor(float dt);

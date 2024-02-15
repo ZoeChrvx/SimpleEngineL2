@@ -7,6 +7,8 @@
 #include "RendererOGL.h"
 #include "Camera.h"
 #include "InputSystem.h"
+#include "OrbitActor.h"
+#include "SplineActor.h"
 
 using std::vector;
 
@@ -25,7 +27,7 @@ public:
 	Game& operator=(Game&&) = delete;
 
 private:
-	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
+	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr), follow(nullptr), orbit(nullptr), path(nullptr) {}
 
 public:
 	bool Initialize();
@@ -51,8 +53,13 @@ private:
 	vector<Actor*> actors;
 	vector<Actor*> pendingActors;
 
+	void ChangeCamera(int mode);
+
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
+	class FollowActor* follow;
+	class OrbitActor* orbit;
+	class SplineActor* path;
 
 	InputSystem inputSystem;
 };

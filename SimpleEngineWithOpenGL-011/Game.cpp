@@ -7,6 +7,8 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "FPSActor.h"
+#include "FollowActor.h"
+
 
 bool Game::Initialize()
 {
@@ -41,6 +43,9 @@ void Game::Load()
 	Assets::LoadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	
 	fps = new FPSActor();
+	follow = new FollowActor();
+	orbit = new OrbitActor();
+	path = new SplineActor();
 
 	Cube* a = new Cube();
 	a->SetPosition(Vector3(200.0f, 105.0f, 0.0f));
@@ -104,7 +109,9 @@ void Game::Load()
 	//Crosshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->SetScale(2.0f);
-	crosshair = new SpriteComponent(crosshairActor, Assets::GetTexture("CrossHair"));
+	crosshair = new SpriteComponent(crosshairActor, Assets::GetTexture("Crosshair"));
+
+	ChangeCamera(2);
 }
 
 void Game::ProcessInput()
@@ -138,6 +145,53 @@ void Game::ProcessInput()
 		actor->ProcessInput(input);
 	}
 	isUpdatingActors = false;
+
+	if (input.keyboard.GetKeyState(SDL_SCANCODE_1) == ButtonState::Pressed) {
+		ChangeCamera(1);
+	}
+	else if (input.keyboard.GetKeyState(SDL_SCANCODE_2) == ButtonState::Pressed) {
+		ChangeCamera(2);
+	}
+	else if (input.keyboard.GetKeyState(SDL_SCANCODE_3) == ButtonState::Pressed) {
+		ChangeCamera(3);
+	}
+	else if (input.keyboard.GetKeyState(SDL_SCANCODE_4) == ButtonState::Pressed) {
+		ChangeCamera(4);
+	}
+}
+
+void Game::ChangeCamera(int mode) {
+	//Disable everything
+	fps->SetState(Actor::ActorState::Paused);
+	fps->SetVisible(false);
+	crosshair->SetVisible(false);
+	follow->SetState(Actor::ActorState::Paused);
+	follow->SetVisible(false);
+	orbit->SetState(Actor::ActorState::Paused);
+	orbit->SetVisible(false);
+	path->SetState(Actor::ActorState::Paused);
+
+	//enable camera specified by the mode
+	switch (mode) {
+	case 1:
+	default:
+		fps->SetState(Actor::ActorState::Active);
+		fps->SetVisible(true);
+		crosshair->SetVisible(true);
+		break;
+	case 2:
+		follow->SetState(Actor::ActorState::Active);
+		follow->SetVisible(true);
+		break;
+	case 3:
+		orbit->SetState(Actor::ActorState::Active);
+		orbit->SetVisible(true);
+		break;
+	case 4:
+		path->SetState(Actor::ActorState::Active);
+		path->RestartSpline();
+		break;
+	}
 }
 
 void Game::Update(float dt)

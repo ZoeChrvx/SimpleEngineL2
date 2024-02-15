@@ -77,8 +77,25 @@
     <ClCompile Include="MeshComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="FollowCameraComponent.cpp" />
-    <ClCompile Include="FollowActor.cpp" />
+    <ClCompile Include="FollowCameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowActor.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbitCameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="OrbitActor.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Spline.cpp" />
+    <ClCompile Include="SplineCameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="SplineActor.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -162,8 +179,25 @@
     <ClInclude Include="DirectionalLight.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="FollowCameraComponent.h" />
-    <ClInclude Include="FollowActor.h" />
+    <ClInclude Include="FollowCameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowActor.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitCameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OrbitActor.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Spline.h" />
+    <ClInclude Include="SplineCameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SplineActor.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

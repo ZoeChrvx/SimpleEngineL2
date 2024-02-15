@@ -16,7 +16,7 @@ public:
 	void set(float xP, float yP, float zP);
 	float lengthSq() const;
 	float length() const;
-	void normalize();
+	void Normalize();
 
 	const float* getAsFloatPtr() const
 	{
@@ -81,10 +81,10 @@ public:
 	}
 
 	// Normalize the provided vector
-	static Vector3 normalize(const Vector3& vec)
+	static Vector3 Normalize(const Vector3& vec)
 	{
 		Vector3 temp = vec;
-		temp.normalize();
+		temp.Normalize();
 		return temp;
 	}
 

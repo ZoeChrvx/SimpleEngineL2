@@ -6,7 +6,7 @@ class FollowActor : public Actor
 public:
 	FollowActor();
 
-	void ActorInput(const InputState& inputSTate) override;
+	void ActorInput(const InputState& inputState) override;
 	void SetVisible(bool isVisibleP);
 
 private:

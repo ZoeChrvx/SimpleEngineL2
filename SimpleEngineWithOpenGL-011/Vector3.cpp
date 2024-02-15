@@ -29,7 +29,7 @@ float Vector3::length() const
 	return (Maths::sqrt(lengthSq()));
 }
 
-void Vector3::normalize()
+void Vector3::Normalize()
 {
 	float len = length();
 	x /= len;

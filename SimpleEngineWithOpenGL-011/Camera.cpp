@@ -7,7 +7,7 @@ Camera::Camera() : Actor(), moveComponent(nullptr)
 	moveComponent = new MoveComponent(this);
 }
 
-void Camera::updateActor(float deltaTime)
+void Camera::UpdateActor(float deltaTime)
 {
 	Actor::updateActor(deltaTime);
 
@@ -20,7 +20,7 @@ void Camera::updateActor(float deltaTime)
 	getGame().GetRenderer().SetViewMatrix(view);
 }
 
-void Camera::actorInput(const struct InputState& inputState)
+void Camera::ActorInput(const struct InputState& inputState)
 {
 	float forwardSpeed = 0.0f;
 	float angularSpeed = 0.0f;

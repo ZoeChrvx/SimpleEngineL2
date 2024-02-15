@@ -44,7 +44,7 @@ void Actor::SetRotation(Quaternion rotationP)
 	mustRecomputeWorldTransform = true;
 }
 
-void Actor::setState(ActorState stateP)
+void Actor::SetState(ActorState stateP)
 {
 	state = stateP;
 }
@@ -78,11 +78,11 @@ void Actor::ProcessInput(const struct InputState& inputState)
 		{
 			component->ProcessInput(inputState);
 		}
-		actorInput(inputState);
+		ActorInput(inputState);
 	}
 }
 
-void Actor::actorInput(const struct InputState& inputState)
+void Actor::ActorInput(const struct InputState& inputState)
 {
 }
 
