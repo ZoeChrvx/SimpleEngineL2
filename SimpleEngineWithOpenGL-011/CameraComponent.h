@@ -10,4 +10,3 @@ public:
 protected:
 	void setViewMatrix(const Matrix4& view);
 };
-

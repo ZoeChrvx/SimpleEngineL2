@@ -10,10 +10,10 @@
 #include "BoxComponent.h"
 #include "Collisions.h"
 
-FPSActor::FPSActor() : 
-	Actor(), 
-	moveComponent(nullptr), 
-	audioComponent(nullptr), 
+FPSActor::FPSActor() :
+	Actor(),
+	moveComponent(nullptr),
+	audioComponent(nullptr),
 	meshComponent(nullptr),
 	cameraComponent(nullptr),
 	lastFootstep(0.0f),
@@ -36,7 +36,8 @@ FPSActor::FPSActor() :
 void FPSActor::updateActor(float dt)
 {
 	Actor::updateActor(dt);
-/*
+
+	/*
 	// Play the footstep if we're moving and haven't recently
 	lastFootstep -= dt;
 	if (!Maths::nearZero(moveComponent->getForwardSpeed()) && lastFootstep <= 0.0f)
@@ -45,7 +46,8 @@ void FPSActor::updateActor(float dt)
 		footstep.restart();
 		lastFootstep = 0.5f;
 	}
-*/
+	*/
+
 	// Update position and rotation of model relatively to position
 	Vector3 modelPosition = getPosition();
 	modelPosition += getForward() * MODEL_OFFSET.x;
@@ -128,7 +130,6 @@ void FPSActor::shoot()
 	ball->setPosition(start + dir * 20.0f);
 	// Rotate the ball to face new direction
 	ball->rotateToNewForward(dir);
-	// Play shooting sound
 }
 
 /*

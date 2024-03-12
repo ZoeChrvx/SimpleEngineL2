@@ -4,7 +4,7 @@
 #include <SDL_mouse.h>
 #include "Maths.h"
 
-InputSystem::InputSystem() : 
+InputSystem::InputSystem() :
 	inputState(),
 	isCursorDisplayed(false),
 	controller(nullptr)
@@ -96,7 +96,7 @@ void InputSystem::update()
 	}
 
 	// Triggers
-	inputState.controller.leftTrigger =	filter1D(SDL_GameControllerGetAxis(controller,	SDL_CONTROLLER_AXIS_TRIGGERLEFT));
+	inputState.controller.leftTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERLEFT));
 	inputState.controller.rightTrigger = filter1D(SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_TRIGGERRIGHT));
 
 	// Sticks

@@ -12,4 +12,3 @@ private:
 	class OrbitCameraComponent* cameraComponent;
 	class MeshComponent* meshComponent;
 };
-

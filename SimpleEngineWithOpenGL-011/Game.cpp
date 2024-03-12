@@ -13,6 +13,7 @@
 #include "TargetActor.h"
 #include <algorithm>
 #include <algorithm>
+#include "Random.h"
 
 bool Game::initialize()
 {
@@ -20,7 +21,9 @@ bool Game::initialize()
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
 
+	Random::init();
 	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	
 }
 
 void Game::load()
@@ -49,52 +52,61 @@ void Game::load()
 	Assets::loadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh("Res\\Meshes\\Target.gpmesh", "Mesh_Target");
 
+	
 	//fps = new FPSActor();
-	follow = new FollowActor();
 	//orbit = new OrbitActor();
 	//path = new SplineActor();
+	follow = new FollowActor();
+	follow->setSpeed(750.0f); // Changer vitesse 
+	
+	// Cube for Boat
+	for (int i = 0; i < 30; i++)
+	{
+		CubeActor* a = new CubeActor();
+		a->setPosition(Vector3(Random::getFloatRange(1750, 40000), Random::getFloatRange(-900, 900), 0.0f));
+		a->setScale(200.f);
+		
+	}
 
-	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
-	a->setScale(100.0f);
-	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
-	a->setRotation(q);
-
-	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);
+	// Sphere Spawn
+	//SphereActor* s = new SphereActor();
+	//s->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	//s->setScale(3.0f);
 
 	// Floor and walls
 
 	// Setup floor
-	const float start = -1250.0f;
-	const float size = 250.0f;
-	for (int i = 0; i < 10; i++)
+	const float start = -10000.0f;
+	const float size = 1000.0f;
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < 20; j++)
 		{
 			PlaneActor* p = new PlaneActor();
-			p->setPosition(Vector3(start + i * size, start + j * size, -100.0f));
+			p->setPosition(Vector3(-200 + i * size, start + j * size, 0));
 		}
 	}
-
+	Quaternion q(Vector3::unitY, -Maths::piOver2);
+	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 2.0f));
 	// Left/right walls
 	q = Quaternion(Vector3::unitX, Maths::piOver2);
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		PlaneActor* p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, start - size, 0.0f));
+		p->setPosition(Vector3(-200 + i * size, -200 - size, 0.0f));
 		p->setRotation(q);
+		p->setScale(75.0f);
 
 		p = new PlaneActor();
-		p->setPosition(Vector3(start + i * size, -start + size, 0.0f));
+		p->setPosition(Vector3(-200 + i * size, 200 + size, 0.0f));
 		p->setRotation(q);
+		p->setScale(75.0f);
 	}
 
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::piOver2));
+	/*
 	// Forward/back walls
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		PlaneActor* p = new PlaneActor();
 		p->setPosition(Vector3(start - size, start + i * size, 0.0f));
@@ -104,6 +116,7 @@ void Game::load()
 		p->setPosition(Vector3(-start + size, start + i * size, 0.0f));
 		p->setRotation(q);
 	}
+	*/
 
 	// Setup lights
 	renderer.setAmbientLight(Vector3(0.2f, 0.2f, 0.2f));
@@ -113,18 +126,11 @@ void Game::load()
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
 	/*
-	// Create spheres with audio components playing different sounds
-	SphereActor* soundSphere = new SphereActor();
-	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
-	soundSphere->setScale(1.0f);
-	AudioComponent* ac = new AudioComponent(soundSphere);
-	ac->playEvent("event:/FireLoop");
-	*/
-
 	// Corsshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
+	
 
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
@@ -134,6 +140,7 @@ void Game::load()
 	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
 	t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
+	*/
 }
 
 void Game::processInput()
@@ -167,17 +174,16 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-
 	// Update actors 
 	isUpdatingActors = true;
-	for(auto actor: actors) 
+	for (auto actor : actors)
 	{
 		actor->update(dt);
 	}
 	isUpdatingActors = false;
 
 	// Move pending actors to actors
-	for (auto pendingActor: pendingActors)
+	for (auto pendingActor : pendingActors)
 	{
 		pendingActor->computeWorldTransform();
 		actors.emplace_back(pendingActor);

@@ -1,7 +1,7 @@
 #include "FollowCameraComponent.h"
 #include "Actor.h"
 
-FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
+FollowCameraComponent::FollowCameraComponent(Actor* ownerP) :
 	CameraComponent(ownerP),
 	horizontalDistance(FOLLOW_HORIZONTAL_DISTANCE),
 	verticalDistance(FOLLOW_VERTICAL_DISTANCE),
@@ -13,6 +13,7 @@ FollowCameraComponent::FollowCameraComponent(Actor* ownerP):
 void FollowCameraComponent::update(float dt)
 {
 	CameraComponent::update(dt);
+
 
 	float dampening = 2.0f * Maths::sqrt(springConstant);
 	Vector3 idealPosition = computeCameraPosition();

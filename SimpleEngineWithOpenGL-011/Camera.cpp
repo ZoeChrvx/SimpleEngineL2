@@ -20,11 +20,10 @@ void Camera::updateActor(float deltaTime)
 	getGame().getRenderer().setViewMatrix(view);
 }
 
-void Camera::actorInput(const struct InputState& inputState)
+void Camera::actorInput(const InputState& inputState)
 {
 	float forwardSpeed = 0.0f;
 	float angularSpeed = 0.0f;
-
 	// wasd movement
 	if (inputState.keyboard.getKeyValue(SDL_SCANCODE_W))
 	{

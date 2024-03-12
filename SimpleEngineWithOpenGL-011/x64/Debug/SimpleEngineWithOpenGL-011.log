@@ -1,27 +1,30 @@
-﻿  Game.cpp
-  SimpleEngineWithOpenGL-011.vcxproj -> D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\x64\Debug\SimpleEngineWithOpenGL-011.exe
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Cube.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Plane.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\RacingCar.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Rifle.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Meshes\Target.gpmesh
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.frag
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.vert
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Crosshair.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Cube.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Default.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\HealthBar.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Plane.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\RacingCar.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Rifle.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
-  D:\Prog\C++\SimpleEngine\SimpleEngineLesson2\SimpleEngineWithOpenGL-011\Res\Textures\Target.png
-  24 File(s) copied
+﻿  FollowActor.cpp
+  FollowCameraComponent.cpp
+  Génération de code en cours...
+  SimpleEngineWithOpenGL-011.vcxproj -> D:\Artfx\Programmation\C++\SimpleEngineL2\x64\Debug\SimpleEngineWithOpenGL-011.exe
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.bank
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Audio\Master Bank.strings.bank
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Cube.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Plane.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\RacingCar.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Rifle.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Sphere.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Meshes\Target.gpmesh
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\BasicMesh.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Phong.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.frag
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Shaders\Sprite.vert
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Crosshair.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Cube.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Default.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\HealthBar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Plane.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\RacingCar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\RacingCar.png~
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Radar.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Rifle.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Sphere.png
+  D:\Artfx\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-011\Res\Textures\Target.png
+  25 fichier(s) copié(s)

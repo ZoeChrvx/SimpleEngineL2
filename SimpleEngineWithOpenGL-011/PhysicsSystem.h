@@ -39,4 +39,3 @@ private:
 	vector<class BoxComponent*> boxes;
 
 };
-

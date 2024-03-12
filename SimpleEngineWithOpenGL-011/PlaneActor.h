@@ -11,4 +11,3 @@ public:
 private:
 	class BoxComponent* box;
 };
-

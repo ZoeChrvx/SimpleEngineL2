@@ -20,4 +20,3 @@ private:
 	AABB worldBox;
 	bool shouldRotate;
 };
-

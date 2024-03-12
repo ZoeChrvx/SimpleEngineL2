@@ -12,4 +12,3 @@ public:
 private:
 	class SplineCameraComponent* cameraComponent;
 };
-
