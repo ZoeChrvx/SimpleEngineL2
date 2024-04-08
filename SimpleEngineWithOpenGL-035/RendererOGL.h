@@ -47,6 +47,7 @@ public:
 private:
 	void drawMeshes();
 	void drawSprites();
+	void drawUI();
 
 	Window* window;
 	SDL_GLContext context;

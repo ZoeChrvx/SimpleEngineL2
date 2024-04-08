@@ -5,7 +5,8 @@
 #include "SpriteComponent.h"
 #include "MeshComponent.h"
 #include "Log.h"
-
+#include "Game.h"
+#include "UIScreen"
 #include <GL/glew.h>
 #include <SDL_image.h>
 

@@ -157,6 +157,12 @@
     <ClCompile Include="TargetActor.cpp">
       <Filter>Prefabs</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScreen.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -323,6 +329,15 @@
     <ClInclude Include="TargetActor.h">
       <Filter>Prefabs</Filter>
     </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScreen.h">
+      <Filter>UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -360,6 +375,9 @@
     </Filter>
     <Filter Include="Systems\Physics">
       <UniqueIdentifier>{374b206e-4f71-45b0-8bfd-551c5d29e94e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{90fba74e-ec7a-4e91-aba9-d10f3f595cb8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,8 @@ public:
 	RendererOGL& getRenderer() { return renderer; }
 	AudioSystem& getAudioSystem() { return audioSystem; }
 	PhysicsSystem& getPhysicsSystem() { return physicsSystem; }
+	const vector<class UIScreen*>& getUIStack() { return UIStack; }
+	void pushUI(class UIScreen* screen);
 
 	// Game-specific
 	void addPlane(class PlaneActor* plane);
@@ -59,6 +61,7 @@ private:
 	AudioSystem audioSystem;
 	InputSystem inputSystem;
 	PhysicsSystem physicsSystem;
+	Font fontSystem;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;
@@ -69,5 +72,7 @@ private:
 	class FPSActor* fps;
 	class SpriteComponent* crosshair;
 	vector<PlaneActor*> planes;
+
+	vector<class UIScreen*> UIStack;
 };
 

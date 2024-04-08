@@ -17,6 +17,8 @@ public:
 	void updateInfo(int& widthOut, int& heightOut);
 	void setActive() const;
 
+	void createFromSurface(struct SDL_Surface* surface);
+
 	inline int getWidth() const { return width; }
 	inline int getHeight() const { return height; }
 

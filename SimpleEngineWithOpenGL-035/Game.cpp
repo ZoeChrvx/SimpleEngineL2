@@ -20,8 +20,9 @@ bool Game::initialize()
 	bool isRendererInit = renderer.initialize(window);
 	bool isAudioInit = audioSystem.initialize();
 	bool isInputInit = inputSystem.initialize();
+	bool isFontInit = fontSystem.initialize();
 
-	return isWindowInit && isRendererInit && isAudioInit && isInputInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit && isAudioInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -50,18 +51,20 @@ void Game::load()
 	Assets::loadMesh("Res\\Meshes\\RacingCar.gpmesh", "Mesh_RacingCar");
 	Assets::loadMesh("Res\\Meshes\\Target.gpmesh", "Mesh_Target");
 
+	Assets::loadFont("Res\\Font\\Carlito-Regular.ttf", "Carlito");
+
 	fps = new FPSActor();
 
-	CubeActor* a = new CubeActor();
+	/*CubeActor* a = new CubeActor();
 	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
-	a->setScale(100.0f);
+	a->setScale(100.0f);*/
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
 	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
-	a->setRotation(q);
+	/*a->setRotation(q);*/
 
-	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);
+	//SphereActor* b = new SphereActor();
+	//b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	//b->setScale(3.0f);
 
 	// Floor and walls
 
@@ -166,37 +169,60 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	// Update audio
-	audioSystem.update(dt);
-
-	// Update actors 
-	isUpdatingActors = true;
-	for(auto actor: actors) 
+	if (state == GameState::Gameplay)
 	{
-		actor->update(dt);
-	}
-	isUpdatingActors = false;
-
-	// Move pending actors to actors
-	for (auto pendingActor: pendingActors)
-	{
-		pendingActor->computeWorldTransform();
-		actors.emplace_back(pendingActor);
-	}
-	pendingActors.clear();
-
-	// Delete dead actors
-	vector<Actor*> deadActors;
-	for (auto actor : actors)
-	{
-		if (actor->getState() == Actor::ActorState::Dead)
+		// Update actors 
+		isUpdatingActors = true;
+		for (auto actor : actors)
 		{
-			deadActors.emplace_back(actor);
+			actor->update(dt);
+		}
+		isUpdatingActors = false;
+
+		// Move pending actors to actors
+		for (auto pendingActor : pendingActors)
+		{
+			pendingActor->computeWorldTransform();
+			actors.emplace_back(pendingActor);
+		}
+		pendingActors.clear();
+
+		// Delete dead actors
+		vector<Actor*> deadActors;
+		for (auto actor : actors)
+		{
+			if (actor->getState() == Actor::ActorState::Dead)
+			{
+				deadActors.emplace_back(actor);
+			}
+		}
+		for (auto deadActor : deadActors)
+		{
+			delete deadActor;
 		}
 	}
-	for (auto deadActor : deadActors)
+
+	// Update UI screens
+	for (auto ui : UIStack)
 	{
-		delete deadActor;
+		if (ui->getState() == UIState::Active)
+		{
+			ui->update(dt);
+		}
+	}
+	// Delete any UIScreens that are closed
+	auto iter = UIStack.begin();
+	while (iter != UIStack.end())
+	{
+		if ((*iter)->getState() == UIState::Closing)
+		{
+			delete* iter;
+			iter = UIStack.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 
@@ -240,6 +266,7 @@ void Game::close()
 	renderer.close();
 	audioSystem.close();
 	window.close();
+	fontSystem.close();
 	SDL_Quit();
 }
 
@@ -271,6 +298,11 @@ void Game::removeActor(Actor* actor)
 		std::iter_swap(iter, end(actors) - 1);
 		actors.pop_back();
 	}
+}
+
+void Game::pushUI(UIScreen* screen)
+{
+	UIStack.emplace_back(screen);
 }
 
 void Game::addPlane(PlaneActor* plane)
