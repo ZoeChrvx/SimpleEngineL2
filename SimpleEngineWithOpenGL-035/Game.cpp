@@ -12,6 +12,7 @@
 #include "OrbitActor.h"
 #include "SplineActor.h"
 #include "TargetActor.h"
+#include "PauseScreen.h"
 #include <algorithm>
 
 bool Game::initialize()
@@ -20,9 +21,9 @@ bool Game::initialize()
 	bool isRendererInit = renderer.initialize(window);
 	bool isAudioInit = audioSystem.initialize();
 	bool isInputInit = inputSystem.initialize();
-	bool isFontInit = fontSystem.initialize();
+	//bool isFontInit = fontSystem.initialize();
 
-	return isWindowInit && isRendererInit && isAudioInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit && isAudioInit && isInputInit /* && isFontInit */ ; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()

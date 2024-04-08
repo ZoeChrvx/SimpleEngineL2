@@ -163,6 +163,9 @@
     <ClCompile Include="UIScreen.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -336,6 +339,9 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="UIScreen.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScreen.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
