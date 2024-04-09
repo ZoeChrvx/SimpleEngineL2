@@ -166,6 +166,7 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="BoneTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -344,6 +345,7 @@
     <ClInclude Include="PauseScreen.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="BoneTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
