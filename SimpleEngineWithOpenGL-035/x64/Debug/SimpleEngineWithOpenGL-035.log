@@ -1,0 +1,55 @@
+﻿  Actor.cpp
+  AnimSpriteComponent.cpp
+  Assets.cpp
+D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Assets.cpp(265,33): warning C4244: 'argument': conversion from 'double' to 'unsigned __int64', possible loss of data
+D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Assets.cpp(282,98): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  BackgroundSpriteComponent.cpp
+  BallActor.cpp
+  BallMoveComponent.cpp
+  BoxComponent.cpp
+  CameraComponent.cpp
+  CubeActor.cpp
+  FPSActor.cpp
+  FollowActor.cpp
+  Game.cpp
+  Main.cpp
+  Mesh.cpp
+  MeshComponent.cpp
+D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\MeshComponent.cpp(28,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  OrbitActor.cpp
+  PlaneActor.cpp
+  RendererOGL.cpp
+  Shader.cpp
+  SphereActor.cpp
+  Generating Code...
+  Compiling...
+  SpriteComponent.cpp
+  TargetActor.cpp
+  Texture.cpp
+  Generating Code...
+  SimpleEngineWithOpenGL-035.vcxproj -> D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\x64\Debug\SimpleEngineWithOpenGL-035.exe
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Audio\Master Bank.bank
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Audio\Master Bank.strings.bank
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\Cube.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\Plane.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\RacingCar.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\Rifle.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\Sphere.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Meshes\Target.gpmesh
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\BasicMesh.frag
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\BasicMesh.vert
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\Phong.frag
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\Phong.vert
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\Sprite.frag
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Shaders\Sprite.vert
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Crosshair.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Cube.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Default.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\HealthBar.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Plane.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\RacingCar.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Radar.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Rifle.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Sphere.png
+  D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Res\Textures\Target.png
+  24 File(s) copied

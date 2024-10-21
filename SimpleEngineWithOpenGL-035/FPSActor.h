@@ -1,6 +1,5 @@
 #pragma once
 #include "Actor.h"
-#include "SoundEvent.h"
 #include "Vector3.h"
 
 class FPSActor : public Actor
@@ -21,7 +20,6 @@ private:
 	class MeshComponent* meshComponent;
 	class FPSCameraComponent* cameraComponent;
 	class Actor* FPSModel;
-	SoundEvent footstep;
 	float lastFootstep;
 };
 

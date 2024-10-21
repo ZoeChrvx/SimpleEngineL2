@@ -6,7 +6,6 @@
 #include "CubeActor.h"
 #include "SphereActor.h"
 #include "PlaneActor.h"
-#include "AudioComponent.h"
 #include "FPSActor.h"
 #include "FollowActor.h"
 #include "OrbitActor.h"
@@ -18,10 +17,9 @@ bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
-	bool isAudioInit = audioSystem.initialize();
 	bool isInputInit = inputSystem.initialize();
 
-	return isWindowInit && isRendererInit && isAudioInit && isInputInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -114,8 +112,6 @@ void Game::load()
 	SphereActor* soundSphere = new SphereActor();
 	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
 	soundSphere->setScale(1.0f);
-	AudioComponent* ac = new AudioComponent(soundSphere);
-	ac->playEvent("event:/FireLoop");
 
 	// Corsshair
 	Actor* crosshairActor = new Actor();
@@ -123,7 +119,6 @@ void Game::load()
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
 	// Start music
-	musicEvent = audioSystem.playEvent("event:/Music");
 
 	TargetActor* t = new TargetActor();
 	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
@@ -166,9 +161,6 @@ void Game::processInput()
 
 void Game::update(float dt)
 {
-	// Update audio
-	audioSystem.update(dt);
-
 	// Update actors 
 	isUpdatingActors = true;
 	for(auto actor: actors) 
@@ -238,7 +230,6 @@ void Game::close()
 {
 	inputSystem.close();
 	renderer.close();
-	audioSystem.close();
 	window.close();
 	SDL_Quit();
 }
