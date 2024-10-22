@@ -211,6 +211,7 @@
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Collisions.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="FollowActor.h" />
     <ClInclude Include="FollowCameraComponent.h" />
     <ClInclude Include="Font.h" />

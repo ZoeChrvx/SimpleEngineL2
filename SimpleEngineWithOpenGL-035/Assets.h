@@ -1,6 +1,8 @@
 #pragma once
 #include <map>
 #include <string>
+
+#include "Font.h"
 #include "Texture.h"
 #include "Shader.h"
 #include "Mesh.h"
@@ -17,28 +19,34 @@ public:
     static std::map<std::string, Texture> textures;
     static std::map<std::string, Shader> shaders;
     static std::map<std::string, Mesh> meshes;
+    static std::map<std::string, Font> fonts;
 
-    // Loads a texture from file
+    //Chargement de la Texture
     static Texture loadTexture(IRenderer& renderer, const string& filename, const string& name);
-
-    // Retrieves a stored texture
+    //Récuperer la texture
     static Texture& getTexture(const std::string& name);
 
+    
     // Loads (and generates) a shader program from file loading vertex, fragment (and tessellation control, evaluation,
     // geometry) shader's source code. If tcShaderFile, teShaderFile, gShaderFile are not nullptr, it also loads
     // tessellation and geometry shaders
     static Shader loadShader(const std::string& vShaderFile, const std::string& fShaderFile,
                              const std::string& tcShaderFile, const std::string& teShaderFile,
                              const std::string& gShaderFile, const std::string& name);
-
-    // Retrieves a stored shader
+    //Récuperer le shader stocké
     static Shader& getShader(const std::string& name);
 
-    // Loads a mesh from file
+    
+    // Chargement d'un mesh
     static Mesh loadMesh(const string& filename, const string& name);
-
-    // Retrieves a stored mesh
+    // Récuperer le mesh stocké
     static Mesh& getMesh(const std::string& name);
+
+    
+    //Chargement de la police via un fichier
+    static Font loadFont(const string& filename, const string& name);
+    //Recuperer la police stockée
+    static Font& getFont(const std::string& name);
 
     // Properly de-allocates all loaded resources
     static void clear();
@@ -55,6 +63,8 @@ private:
                                      const std::string& gShaderFile = "");
 
     static Mesh loadMeshFromFile(const string& filename);
+
+    static Font loadFontFromFile(const string& filename);
 
 };
 

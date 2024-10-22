@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Actor.h"
+#include "Font.h"
 #include "SpriteComponent.h"
 #include "Window.h"
 #include "Vector2.h"
@@ -56,6 +57,7 @@ private:
 	RendererOGL renderer;
 	InputSystem inputSystem;
 	PhysicsSystem physicsSystem;
+	Font font;
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;

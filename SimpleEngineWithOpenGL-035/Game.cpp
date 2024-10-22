@@ -18,8 +18,9 @@ bool Game::initialize()
 	bool isWindowInit = window.initialize();
 	bool isRendererInit = renderer.initialize(window);
 	bool isInputInit = inputSystem.initialize();
+	bool isFontInit = font.initialize();
 
-	return isWindowInit && isRendererInit && isInputInit; // Return bool && bool && bool ...to detect error
+	return isWindowInit && isRendererInit && isInputInit && isFontInit; // Return bool && bool && bool ...to detect error
 }
 
 void Game::load()
@@ -231,6 +232,7 @@ void Game::close()
 	inputSystem.close();
 	renderer.close();
 	window.close();
+	font.close();
 	SDL_Quit();
 }
 
