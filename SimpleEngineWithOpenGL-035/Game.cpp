@@ -13,6 +13,8 @@
 #include "TargetActor.h"
 #include <algorithm>
 
+#include "UIScreen.h"
+
 bool Game::initialize()
 {
 	bool isWindowInit = window.initialize();
@@ -51,16 +53,16 @@ void Game::load()
 
 	fps = new FPSActor();
 
-	CubeActor* a = new CubeActor();
-	a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
-	a->setScale(100.0f);
+	// CubeActor* a = new CubeActor();
+	// a->setPosition(Vector3(200.0f, 105.0f, 0.0f));
+	// a->setScale(100.0f);
 	Quaternion q(Vector3::unitY, -Maths::piOver2);
-	q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
-	a->setRotation(q);
-
-	SphereActor* b = new SphereActor();
-	b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
-	b->setScale(3.0f);
+	// q = Quaternion::concatenate(q, Quaternion(Vector3::unitZ, Maths::pi + Maths::pi / 4.0f));
+	// a->setRotation(q);
+	//
+	// SphereActor* b = new SphereActor();
+	// b->setPosition(Vector3(200.0f, -75.0f, 0.0f));
+	// b->setScale(3.0f);
 
 	// Floor and walls
 
@@ -109,26 +111,26 @@ void Game::load()
 	dir.diffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.specColor = Vector3(0.8f, 0.8f, 0.8f);
 
-	// Create spheres with audio components playing different sounds
-	SphereActor* soundSphere = new SphereActor();
-	soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
-	soundSphere->setScale(1.0f);
+	// // Create spheres with audio components playing different sounds
+	// SphereActor* soundSphere = new SphereActor();
+	// soundSphere->setPosition(Vector3(500.0f, -75.0f, 0.0f));
+	// soundSphere->setScale(1.0f);
 
-	// Corsshair
+	// Crosshair
 	Actor* crosshairActor = new Actor();
 	crosshairActor->setScale(2.0f);
 	crosshair = new SpriteComponent(crosshairActor, Assets::getTexture("Crosshair"));
 
 	// Start music
 
-	TargetActor* t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
-	t = new TargetActor();
-	t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
+	// TargetActor* t = new TargetActor();
+	// t->setPosition(Vector3(1450.0f, 0.0f, 100.0f));
+	// t = new TargetActor();
+	// t->setPosition(Vector3(1450.0f, 0.0f, 400.0f));
+	// t = new TargetActor();
+	// t->setPosition(Vector3(1450.0f, -500.0f, 200.0f));
+	// t = new TargetActor();
+	// t->setPosition(Vector3(1450.0f, 500.0f, 200.0f));
 }
 
 void Game::processInput()
@@ -190,6 +192,30 @@ void Game::update(float dt)
 	for (auto deadActor : deadActors)
 	{
 		delete deadActor;
+	}
+
+	//Update UI
+	for (auto ui : UIStack)
+	{
+		if(ui->getState() == UIState::Active)
+		{
+			ui->update(dt);
+		}
+	}
+
+	//Supprimer tous les Screens UI qui sont fermés
+	auto iter = UIStack.begin();
+	while (iter != UIStack.end())
+	{
+		if((*iter)->getState()==UIState::Closing)
+		{
+			delete* iter;
+			iter = UIStack.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
 	}
 }
 
@@ -276,3 +302,9 @@ void Game::removePlane(PlaneActor* plane)
 	auto iter = std::find(begin(planes), end(planes), plane);
 	planes.erase(iter);
 }
+
+void Game::pushUI(UIScreen* screen)
+{
+	UIStack.emplace_back(screen);
+}
+

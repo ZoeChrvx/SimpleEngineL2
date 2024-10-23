@@ -26,8 +26,13 @@ public:
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
 
+	const vector<class UIScreen*>& getUIStack(){return getUIStack();}
+	void pushUI(class  UIScreen* screen);
+
 private:
 	Game() : isRunning(true), isUpdatingActors(false), fps(nullptr), crosshair(nullptr) {}
+
+	vector<class UIScreen*> UIStack;
 
 public:
 	bool initialize();
