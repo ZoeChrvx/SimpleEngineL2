@@ -41,6 +41,14 @@ void UIScreen::draw(Shader& shader)
     }
 }
 
+void UIScreen::processInput(const InputState& inputState)
+{
+}
+
+void UIScreen::close()
+{
+}
+
 void UIScreen::drawTexture(Shader& shader, Texture* texture, const Vector2& offset, float scale)
 {
     Matrix4 scaleMat = Matrix4::createScale(

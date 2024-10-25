@@ -30,6 +30,7 @@ D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Mous
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\MoveComponent.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\MoveComponent.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\OrbitActor.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\OrbitActor.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\OrbitCameraComponent.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\OrbitCameraComponent.obj
+D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\PauseScreen.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\PauseScreen.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\PhysicsSystem.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\PhysicsSystem.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Plane.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\Plane.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\PlaneActor.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\PlaneActor.obj
@@ -48,6 +49,7 @@ D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Spri
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\TargetActor.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\TargetActor.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Texture.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\Texture.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Timer.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\Timer.obj
+D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\UIScreen.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\UIScreen.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Vector2.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\Vector2.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\Vector3.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\Vector3.obj
 D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\VertexArray.cpp;D:\Zoe CHervaux\Programmation\C++\SimpleEngineL2\SimpleEngineWithOpenGL-035\x64\Debug\VertexArray.obj
