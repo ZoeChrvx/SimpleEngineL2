@@ -34,7 +34,7 @@ public:
 	Game(Game&&) = delete;
 	Game& operator=(Game&&) = delete;
 
-	const vector<class UIScreen*>& getUIStack(){return getUIStack();}
+	const vector<class UIScreen*>& getUIStack(){return UIStack;}
 	void pushUI(class  UIScreen* screen);
 
 	
@@ -77,7 +77,7 @@ private:
 	InputSystem inputSystem;
 	PhysicsSystem physicsSystem;
 	Font font;
-	GameState state;
+	GameState state; 
 
 	bool isUpdatingActors;
 	vector<Actor*> actors;

@@ -26,10 +26,16 @@ public:
     virtual void processInput(const class InputState& inputState);
     void close();
 
+    void addButton(const string& name, std::function<void()>onClick);
+
 protected:
     void drawTexture(class Shader& shader, class Texture* texture, const Vector2& offset = Vector2::zero, float scale = 1.0f);
     class Font& font;
     class Texture* title;
     Vector2 titlePosition;
     UIState state;
+    vector<class Button*> buttons;
+    class Texture& buttonOn;
+    class Texture& buttonOff;
+    Vector2 nextButtonPosition;
 };

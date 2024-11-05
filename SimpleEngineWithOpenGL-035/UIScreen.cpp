@@ -3,8 +3,16 @@
 #include "Font.h"
 #include "Assets.h"
 #include "Game.h"
+#include "Button.h"
 
-UIScreen::UIScreen() : title (nullptr), titlePosition(0.0f, 300.0f), state(UIState::Active), font(Assets::getFont("Carlito"))
+UIScreen::UIScreen() :
+    title {nullptr},
+    titlePosition{0.0f, 300.0f},
+    state{UIState::Active},
+    font{Assets::getFont("Carlito")},
+    buttonOn{Assets::getTexture("ButtonYellow")},
+    buttonOff{Assets::getTexture("ButtonBlue")}
+
 {
     Game::instance().pushUI(this);
 }
@@ -39,10 +47,34 @@ void UIScreen::draw(Shader& shader)
     {
         drawTexture(shader, title, titlePosition);
     }
+    for(auto b : buttons)
+    {
+        //Dessiner les contours des boutons
+        Texture* tex = b->getHighlighted() ? &buttonOn : &buttonOff;
+        drawTexture(shader, tex, b->getPosition());
+    }
 }
 
 void UIScreen::processInput(const InputState& inputState)
 {
+    if(!buttons.empty())
+    {
+        for(auto b : buttons)
+        {
+            if(b->containsPoint(inputState.mouse.getPosition()))
+            {
+                b->setHighlighted(true);
+            }
+            else
+            {
+                b->setHighlighted(false);
+            }
+            if(b->getHighlighted() && inputState.mouse.getButtonState(1)== ButtonState::Released)
+            {
+                b->onClick();
+            }
+        }
+    }
 }
 
 void UIScreen::close()
@@ -60,6 +92,17 @@ void UIScreen::drawTexture(Shader& shader, Texture* texture, const Vector2& offs
     //Dessiner le rectagnle
     glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_INT, nullptr);
 }
+
+void UIScreen::addButton(const string& name, std::function<void()> onClick)
+{
+    Vector2 dims(static_cast<float>(buttonOn.getWidth()),
+        static_cast<float>(buttonOn.getHeight()));
+    Button* b = new Button(name, font, onClick, nextButtonPosition, dims);
+    buttons.emplace_back(b);
+
+    nextButtonPosition.y -= buttonOff.getHeight() + 20.0f;
+}
+
 
 
 

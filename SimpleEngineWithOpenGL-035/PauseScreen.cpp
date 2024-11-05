@@ -4,12 +4,16 @@
 PauseScreen::PauseScreen() : UIScreen()
 {
     Game::instance().setState(GameState::Pause);
+    Game::instance().getInputSystem().setMouseRelativeMode(false);
     setTitle("PauseTitle");
+    addButton("ResumeButton", [this](){close();});
+    addButton("QuitButton", [this](){Game::instance().setState(GameState::Quit);});
 }
 
 PauseScreen::~PauseScreen()
 {
     Game::instance().setState(GameState::Gameplay);
+    Game::instance().getInputSystem().setMouseRelativeMode(true);
 }
 
 void PauseScreen::processInput(const InputState& inputState)
